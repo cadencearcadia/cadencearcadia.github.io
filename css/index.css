@@ -72,7 +72,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .hibachi_menu {
     position: relative;
-    margin-bottom: 105px;
+    margin-bottom: 100px;
 }
 
 .hibachi_menu img {
@@ -121,13 +121,18 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 @media only screen and (max-width: 600px) {
 
+    h1 {
+        font-size: 2.6rem;
+        font-weight: 800;
+    }
+
     .wrapper-main {
       width: 90%;
     }
 
     .single_menu {
         position: relative;
-        margin-bottom: 5%;
+        margin-bottom: 6%;
     }
 
     .single_menu img {
