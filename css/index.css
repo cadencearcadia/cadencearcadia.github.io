@@ -10,7 +10,7 @@ body {
 h1 {
     font-size: 4.0rem;
     font-weight: 800;
-    margin-bottom: 30px
+    margin-bottom: 30px;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     height: 150px;
     display: flex;
     justify-content: center;
-    background-color: black;
+    background-color: #111;
   }
   
   .header-main-logo {
@@ -75,6 +75,30 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-right: 20px;
 }
 
+.information_content {
+  position: relative;
+}
+
+.information_content h2 {
+  font-size: 2.3rem;
+  font-weight: 600;
+  border-bottom: 1px dashed #c0392b;
+  line-height: 150%;
+  text-transform: capitalize;
+}
+
+.information_content p {
+  font-weight: 200;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  line-height: 100%;
+}
+
+.information_content img {
+  width: 29rem;
+  height: 29rem;
+}
+
 .menu_content {
   width: 100%;  
 }
@@ -107,8 +131,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .footer-main {
     width: 100%;
     padding: 0px 0 50px;
-    background-color: black;
+    background-color: #111;
 }
+
 
 /*Menu ends*/
 
