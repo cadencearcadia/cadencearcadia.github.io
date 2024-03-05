@@ -143,14 +143,14 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
       width: 100%;  
     }
 
-    .menu_content h4 {
+    .menu_content h2 {
         font-size: 1.9rem;
         font-weight: 600;
         border-bottom: 1px dashed #c0392b;
         line-height: 125%;
         text-transform: capitalize;
     }
-    .menu_content h4 span {
+    .menu_content h2 span {
         font-size: 2.0rem;
         font-weight: 800;
         float: inline-end;
