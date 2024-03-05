@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="wide=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Tom Tom's Island Style</title>
+</head>
+
+<body>
+
+    <main>
+        <header class="header-main">
+            <div class="header-main-logo">
+                <img src="img/tomtomslogo.webp" alt="NEW Logo">
+            </div>
+            <nav class="header-main-nav"></nav>
+            <div class="header-main-sm"></div>
+        </header>
+
+
+        <div class="wrapper-main">
+            <section id="homestyle" class="pt-5 pb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="page_title text-center mb-4">
+                                <h1>Josefa's Recipes Homestyle</h1>
+                                <div class="single_line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="single_menu">
+                                <img src="img/adobo.webp" alt="burger">
+                                <div class="menu_content">
+                                    <h4>Pork Adobo<span>$13</span></h4>
+                                    <p>Slow Cooked & Marinated. Served with chamorro red rice and cucumber salad. <b>LIMITED AVAILABILITY</b>.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single_menu">
+                                <img src="img/adobo.webp" alt="black coffee">
+                                <div class="menu_content">
+                                    <h4>Beef Stir Fry <span>$13</span></h4>
+                                    <p>Thin Sliced beef grilled veggies over rice.<br></p><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sushi" class="pt-5 pb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="page_title text-center mb-4">
+                                <h1>Sushi</h1>
+                                <div class="single_line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="single_menu">
+                                <img src="img/sushi.webp" alt="burger">
+                                <div class="menu_content">
+                                    <h4>California Roll <span>$7</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/sushi.webp" alt="black coffee">
+                                <div class="menu_content">
+                                    <h4>Spicy Tuna Roll <span>$7</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/sushi.webp" alt="fried rice">
+                                <div class="menu_content">
+                                    <h4>Garlic Salmon Roll <span>$7</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/sushi.webp" alt="meat">
+                                <div class="menu_content">
+                                    <h4>Avocado Cucumber Roll<span>$7</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/sushi.webp" alt="meat">
+                                <div class="menu_content">
+                                    <h4>Tuna Avocado Roll <span>$7</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single_menu">
+                                <img src="img/sushi.webp" alt="Fire Shrimp Roll">
+                                <div class="menu_content">
+                                    <h4>Fire Shrimp Roll <span>$11</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/sushi.webp" alt="Island Roll">
+                                <div class="menu_content">
+                                    <h4>Island Roll <span>$11</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/sushi.webp" alt="Double Rainbow Roll">
+                                <div class="menu_content">
+                                    <h4>Double Rainbow Roll <span>$11</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/sushi.webp" alt="CoCo Loco Roll">
+                                <div class="menu_content">
+                                    <h4>CoCo Loco Roll <span>$11</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/sushi.webp" alt="TNT Roll">
+                                <div class="menu_content">
+                                    <h4>TNT Roll <span>$11</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/sushi.webp" alt="TNT Roll">
+                                <div class="menu_content">
+                                    <h4>Crispy Crunchy Shrimp Roll <span>$11</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="hibachi" class="pt-5 pb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="page_title text-center mb-4">
+                                <h1>Hibachi</h1>
+                                <div class="single_line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="single_menu">
+                                <img src="img/hibachi.webp" alt="burger">
+                                <div class="menu_content">
+                                    <h4>Chicken<span>$13</span></h4>
+                                    <p>Served with Hibachi vegetables and red rice. Substitute Fried Island Rice for an extra $1.50. </p>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/hibachi.webp" alt="black coffee">
+                                <div class="menu_content">
+                                    <h4>Shrimp <span>$14</span></h4>
+                                    <p>Served with Hibachi vegetables and red rice. Substitute Fried Island Rice for an extra $1.50.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single_menu">
+                                <img src="img/hibachi.webp" alt="Fire Shrimp Roll">
+                                <div class="menu_content">
+                                    <h4>Steak <span>$16</span></h4>
+                                    <p>Served with Hibachi vegetables and red rice. Substitute Fried Island Rice for an extra $1.50.</p>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/hibachi.webp" alt="Island Roll">
+                                <div class="menu_content">
+                                    <h4>Veggie <span>$10</span></h4>
+                                    <p>Served with Hibachi vegetables and red rice. Substitute Fried Island Rice for an extra $1.50.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="lumpia" class="pt-5 pb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="page_title text-center mb-4">
+                                <h1>Apps & Sides</h1>
+                                <div class="single_line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="single_menu">
+                                <img src="img/lumpia.webp" alt="burger">
+                                <div class="menu_content">
+                                    <h4>Lumpia <span>$6</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/lumpia.webp" alt="black coffee">
+                                <div class="menu_content">
+                                    <h4>Deep Fried Gyoza <span>$6</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single_menu">
+                                <img src="img/lumpia.webp" alt="fried rice">
+                                <div class="menu_content">
+                                    <h4>Coconut Shrimp<span>$6</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/lumpia.webp" alt="meat">
+                                <div class="menu_content">
+                                    <h4>Fried Red Rice<span>$3.50</span></h4>
+                                    <p>Shrimp Tempura, Avocado, Jalapeno inside topped with Spicy Tuna, Crunchies, Fire Sauce and Spicy Mayo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="drinks" class="pt-5 pb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="page_title text-center mb-4">
+                                <h1>Drinks</h1>
+                                <div class="single_line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="single_menu">
+                                <img src="img/cokecan.webp" alt="burger">
+                                <div class="menu_content">
+                                    <h4>Coke <span>$2</span></h4>
+                                    <p>Coca Cola details.</p><br>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/cokecan.webp" alt="black coffee">
+                                <div class="menu_content">
+                                    <h4>7up <span>$2</span></h4>
+                                    <p>7up details</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single_menu">
+                                <img src="img/cokecan.webp" alt="fried rice">
+                                <div class="menu_content">
+                                    <h4>Water<span>$1</span></h4>
+                                    <p>Water Details</p><br>
+                                </div>
+                            </div>
+                            <div class="single_menu">
+                                <img src="img/cokecan.webp" alt="meat">
+                                <div class="menu_content">
+                                    <h4>Slushie<span>$3</span></h4>
+                                    <p>Flavors</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <p><a class="callusbutton" href="tel:5303549037"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone-outbound" viewBox="0 0 16 16">
+                        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5" />
+                    </svg>
+                    (530) 354-9037</a></p>
+
+
+        </div>
+    </main>
+    <footer class="footer-main"></footer>
+
+</body>
+
+</html>
