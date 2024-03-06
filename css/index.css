@@ -5,6 +5,24 @@ html {
 body {
     background-image: url("../img/sushibg.webp");
     background-repeat: repeat-y;
+    padding-top: 150px;
+}
+
+a {
+  cursor: pointer;
+}
+
+a:link { 
+  text-decoration: none; 
+} 
+a:visited { 
+  text-decoration: none; 
+} 
+a:hover { 
+  text-decoration: none; 
+} 
+a:active { 
+  text-decoration: none; 
 }
 
 h1 {
@@ -17,19 +35,25 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     margin-top: 0;
 }
 
-
+ul {
+  list-style-type: none;
+}
 
 .header-main {
+    position: fixed;
+    top: 0;
     width: 100%;
     height: 150px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     background-color: #111;
+    z-index: 1000;
   }
   
   .header-main-logo {
-    width: auto;
+    width: fit-content;
     height: 100%;
+    display: flex;
   }
   
   .header-main-logo img {
@@ -39,6 +63,63 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   .header-main-nav {
     width: fit-content;
     height: 100%;
+  }
+
+  .header-main-nav ul {
+    list-style: none;
+  }
+
+  .header-main-nav ul li {
+    display: inline;
+    float: left;
+  }
+
+  .header-main-nav ul li a {
+    padding: 0 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 150px;
+    display: block;
+    height: 100%;
+  }
+
+  .header-main-nav ul li a:hover {
+    color: #8ab55e;
+  }
+
+  .header-main-sm {
+    width: fit-content;
+    height: 100%;
+    padding-right: 60px;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  .header-main-sm-fb {
+    width: 40px;
+    height: 40px;
+    background-image: url(../img/facebook.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .header-main-sm-fb:hover {
+    background-image: url(../img/facebook-hover.svg);
+  }
+
+  .header-main-sm-in {
+    width: 40px;
+    height: 40px;
+    background-image: url(../img/instagram.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .header-main-sm-in:hover {
+    background-image: url(../img/instagram-hover.svg);
   }
 
   .wrapper-main {
@@ -133,6 +214,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     background-color: #111;
 }
 
+.burger-menu, .burger-menu-btn {
+  display: none;
+}
 
 /*Menu ends*/
 
@@ -141,6 +225,65 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     h1 {
         font-size: 2.6rem;
         font-weight: 800;
+    }
+
+    .header-main-logo {
+      padding-left: 20px;
+    }
+
+    .header-main-nav {
+      display: none;
+    }
+
+    .header-main-sm {
+      padding-right: 20px;
+    }
+
+    .burger-menu-btn {
+      display: block;
+      width: 50px;
+      height: 50px;
+      background-image: url(../img/menu-bar.svg), url(../img/menu-close.svg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center, center left 50px;
+    }
+
+    .burger-menu {
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      z-index: 900;
+      background-image: url("../img/sushibg.webp");
+      background-repeat: repeat-y;
+    }
+
+    .burger-menu ul {
+      width: 100%;
+      height: calc(100vh - 150px);
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+    }
+
+    .burger-menu ul li {
+      flex-basis: 100%;
+      border-bottom: 1px solid #000;
+      padding: 20px;
+      margin-right: 20px;
+    }
+
+    .burger-menu ul li a {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #000000;
+      display: block;
+      height: 100%;
+
+      flex-basis: 100%;
+      text-align: center;
     }
 
     .wrapper-main {
@@ -204,6 +347,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         font-size: 2.2rem;
         font-weight: 600;
         line-height: 150%;
+        z-index: 1000;
       }
 
       .callusbutton p {
