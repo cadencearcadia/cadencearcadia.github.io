@@ -58,6 +58,7 @@ ul {
   
   .header-main-logo img {
     height: 150px;
+    width: auto;
   }
   
   .header-main-nav {
