@@ -172,7 +172,7 @@ ul {
 .information_content h2 {
   font-size: 2.3rem;
   font-weight: 600;
-  border-bottom: 1px dashed #c0392b;
+  border-bottom: 1px solid #c0392b;
   line-height: 150%;
   text-transform: capitalize;
 }
@@ -196,7 +196,7 @@ ul {
 .menu_content h2 {
     font-size: 2.3rem;
     font-weight: 600;
-    border-bottom: 1px dashed #c0392b;
+    border-bottom: 1px solid #c0392b;
     line-height: 150%;
     text-transform: capitalize;
 }
@@ -324,7 +324,7 @@ ul {
     .menu_content h2 {
         font-size: 1.9rem;
         font-weight: 600;
-        border-bottom: 1px dashed #c0392b;
+        border-bottom: 1px solid #c0392b;
         line-height: 125%;
         text-transform: capitalize;
     }
