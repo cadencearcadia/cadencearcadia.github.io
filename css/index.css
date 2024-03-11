@@ -14,7 +14,7 @@ body:after {
   height: 0;
   overflow: hidden;
   z-index: -1;
-  content: url(../img/facebook-hover.svg) url(../img/instagram-hover.svg);
+  content: url(../img/facebook-hover.svg) url(../img/instagram-hover.svg) url(../img/maplocation.webp);
 }
 
 a {
