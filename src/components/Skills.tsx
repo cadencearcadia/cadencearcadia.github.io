@@ -11,11 +11,13 @@ import {
 
 const skills = [
   { name: "React", level: 95, icon: <Blocks className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "TypeScript", level: 90, icon: <FileCode2 className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "TypeScript", level: 50, icon: <FileCode2 className="w-5 h-5 sm:w-6 sm:h-6" /> },
   { name: "Next.js", level: 85, icon: <Workflow className="w-5 h-5 sm:w-6 sm:h-6" /> },
   { name: "Redux", level: 88, icon: <Puzzle className="w-5 h-5 sm:w-6 sm:h-6" /> },
   { name: "React Query", level: 92, icon: <Database className="w-5 h-5 sm:w-6 sm:h-6" /> },
   { name: "Testing", level: 85, icon: <TestTube className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "VIM", level: 30, icon: <TestTube className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "Python", level: 15, icon: <TestTube className="w-5 h-5 sm:w-6 sm:h-6" /> },
 ];
 
 export const Skills = () => {
