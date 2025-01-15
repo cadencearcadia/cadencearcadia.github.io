@@ -19,11 +19,20 @@ export const Hero = () => {
 
   return (
     <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center px-4 relative">
+      <div 
+        className="absolute inset-0 -z-10 opacity-20"
+        style={{
+          backgroundImage: 'url("https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80&w=1920")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-center max-w-3xl mx-auto space-y-6"
+        className="text-center max-w-3xl mx-auto space-y-6 backdrop-blur-sm bg-background/50 p-8 rounded-lg"
       >
         <span className="text-sm uppercase tracking-wider text-muted-foreground">
           React Engineer

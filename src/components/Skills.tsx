@@ -20,7 +20,16 @@ const skills = [
 
 export const Skills = () => {
   return (
-    <section className="py-20 px-4 bg-muted/30" id="skills">
+    <section className="py-20 px-4 bg-muted/30 relative" id="skills">
+      <div 
+        className="absolute inset-0 -z-10 opacity-10"
+        style={{
+          backgroundImage: 'url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1920")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

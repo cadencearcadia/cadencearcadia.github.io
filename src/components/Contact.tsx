@@ -27,7 +27,16 @@ export const Contact = () => {
   };
 
   return (
-    <section className="py-20 px-4" id="contact">
+    <section className="py-20 px-4 relative" id="contact">
+      <div 
+        className="absolute inset-0 -z-10 opacity-10"
+        style={{
+          backgroundImage: 'url("https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80&w=1920")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
