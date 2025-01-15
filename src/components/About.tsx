@@ -31,16 +31,13 @@ export const About = () => {
         <Card className="backdrop-blur-sm bg-card/50">
           <CardContent className="p-6 space-y-4">
             <p className="text-lg leading-relaxed">
-              With over 5 years of experience in React development, I specialize in
-              building scalable web applications that combine elegant design with
-              robust functionality. My expertise includes modern React practices,
-              state management solutions, and performance optimization techniques.
+              Hi, I’m Jacob Buck—a seasoned coder with over 20 years of experience and a passion for blending creativity with technology. With over 5 years of expertise in React development, I specialize in building scalable web applications that combine elegant design with robust functionality. My skills include modern React practices, state management solutions, and performance optimization techniques.
             </p>
             <p className="text-lg leading-relaxed">
-              I'm passionate about creating intuitive user interfaces and writing
-              clean, maintainable code. My approach focuses on delivering
-              high-quality solutions that meet both user needs and business
-              objectives.
+              As a former owner of a dance music record label, I bring a creative edge to my work, crafting intuitive user interfaces that resonate with users. I’m passionate about writing clean, maintainable code and delivering high-quality solutions that meet both user needs and business objectives.
+            </p>
+            <p classname="text-lg leading-relaxed">
+              Fueled by an insatiable curiosity, I’m driven to uncover how things work at their core. Living in California inspires my innovative spirit, where I tackle challenges head-on with resourcefulness and determination. Whether refining code or solving complex problems, I strive to turn big ideas into elegant, impactful solutions.
             </p>
           </CardContent>
         </Card>
