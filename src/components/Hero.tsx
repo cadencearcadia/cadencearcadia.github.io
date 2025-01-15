@@ -3,8 +3,22 @@ import { Button } from "./ui/button";
 import { ArrowDown } from "lucide-react";
 
 export const Hero = () => {
+  const scrollToProjects = () => {
+    const element = document.querySelector("#projects");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const scrollToContact = () => {
+    const element = document.querySelector("#contact");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center px-4 relative">
+    <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center px-4 relative">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -22,8 +36,10 @@ export const Hero = () => {
           focus on user experience and clean code.
         </p>
         <div className="flex gap-4 justify-center pt-4">
-          <Button size="lg">View Projects</Button>
-          <Button size="lg" variant="outline">
+          <Button size="lg" onClick={scrollToProjects}>
+            View Projects
+          </Button>
+          <Button size="lg" variant="outline" onClick={scrollToContact}>
             Contact Me
           </Button>
         </div>
