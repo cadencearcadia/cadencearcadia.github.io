@@ -36,7 +36,7 @@ export const About = () => {
             <p className="text-lg leading-relaxed">
               As a former owner of a dance music record label, I bring a creative edge to my work, crafting intuitive user interfaces that resonate with users. I’m passionate about writing clean, maintainable code and delivering high-quality solutions that meet both user needs and business objectives.
             </p>
-            <p classname="text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed">
               Fueled by an insatiable curiosity, I’m driven to uncover how things work at their core. Living in California inspires my innovative spirit, where I tackle challenges head-on with resourcefulness and determination. Whether refining code or solving complex problems, I strive to turn big ideas into elegant, impactful solutions.
             </p>
           </CardContent>
