@@ -10,17 +10,17 @@ import {
 } from "lucide-react";
 
 const skills = [
-  { name: "React", level: 95, icon: <Blocks className="w-6 h-6" /> },
-  { name: "TypeScript", level: 90, icon: <FileCode2 className="w-6 h-6" /> },
-  { name: "Next.js", level: 85, icon: <Workflow className="w-6 h-6" /> },
-  { name: "Redux", level: 88, icon: <Puzzle className="w-6 h-6" /> },
-  { name: "React Query", level: 92, icon: <Database className="w-6 h-6" /> },
-  { name: "Testing", level: 85, icon: <TestTube className="w-6 h-6" /> },
+  { name: "React", level: 95, icon: <Blocks className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "TypeScript", level: 90, icon: <FileCode2 className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "Next.js", level: 85, icon: <Workflow className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "Redux", level: 88, icon: <Puzzle className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "React Query", level: 92, icon: <Database className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "Testing", level: 85, icon: <TestTube className="w-5 h-5 sm:w-6 sm:h-6" /> },
 ];
 
 export const Skills = () => {
   return (
-    <section className="py-20 px-4 bg-muted/30 relative" id="skills">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 relative" id="skills">
       <div 
         className="absolute inset-0 -z-10 opacity-10"
         style={{
@@ -35,15 +35,15 @@ export const Skills = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="max-w-4xl mx-auto space-y-12"
+        className="max-w-4xl mx-auto space-y-8 sm:space-y-12"
       >
         <div className="text-center space-y-4">
-          <span className="text-sm uppercase tracking-wider text-muted-foreground">
+          <span className="text-sm sm:text-base uppercase tracking-wider text-muted-foreground">
             Skills
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold">Technical Expertise</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Technical Expertise</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
@@ -53,21 +53,21 @@ export const Skills = () => {
               viewport={{ once: true }}
             >
               <Card className="backdrop-blur-sm bg-card/50">
-                <CardContent className="p-6">
+                <CardContent className="p-4 sm:p-6">
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
                       {skill.icon}
                       <div className="flex-1">
                         <div className="flex justify-between items-center">
-                          <h3 className="font-medium">{skill.name}</h3>
-                          <span className="text-sm text-muted-foreground">
+                          <h3 className="text-sm sm:text-base font-medium">{skill.name}</h3>
+                          <span className="text-xs sm:text-sm text-muted-foreground">
                             {skill.level}%
                           </span>
                         </div>
                       </div>
                     </div>
                     <motion.div
-                      className="h-2 bg-muted rounded-full overflow-hidden"
+                      className="h-1.5 sm:h-2 bg-muted rounded-full overflow-hidden"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       transition={{ delay: index * 0.1 }}

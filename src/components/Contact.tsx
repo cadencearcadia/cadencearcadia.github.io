@@ -27,7 +27,7 @@ export const Contact = () => {
   };
 
   return (
-    <section className="py-20 px-4 relative" id="contact">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative" id="contact">
       <div 
         className="absolute inset-0 -z-10 opacity-10"
         style={{
@@ -42,18 +42,18 @@ export const Contact = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="max-w-4xl mx-auto space-y-12"
+        className="max-w-2xl mx-auto space-y-8 sm:space-y-12"
       >
         <div className="text-center space-y-4">
-          <span className="text-sm uppercase tracking-wider text-muted-foreground">
+          <span className="text-sm sm:text-base uppercase tracking-wider text-muted-foreground">
             Contact
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold">Get in Touch</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Get in Touch</h2>
         </div>
         <Card className="backdrop-blur-sm bg-card/50">
-          <CardContent className="p-6">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <CardContent className="p-4 sm:p-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium">
                     Name
