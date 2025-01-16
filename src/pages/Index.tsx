@@ -2,13 +2,13 @@ import { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 
 // Lazy load components
-const Navigation = lazy(() => import("@/components/Navigation"));
-const Hero = lazy(() => import("@/components/Hero").then(module => ({ default: module.Hero })));
-const About = lazy(() => import("@/components/About").then(module => ({ default: module.About })));
-const Skills = lazy(() => import("@/components/Skills").then(module => ({ default: module.Skills })));
-const AdditionalSkills = lazy(() => import("@/components/AdditionalSkills").then(module => ({ default: module.AdditionalSkills })));
-const Projects = lazy(() => import("@/components/Projects").then(module => ({ default: module.Projects })));
-const Contact = lazy(() => import("@/components/Contact").then(module => ({ default: module.Contact })));
+const Navigation = lazy(() => import("@/components/Navigation").then(mod => ({ default: mod.Navigation })));
+const Hero = lazy(() => import("@/components/Hero").then(mod => ({ default: mod.Hero })));
+const About = lazy(() => import("@/components/About").then(mod => ({ default: mod.About })));
+const Skills = lazy(() => import("@/components/Skills").then(mod => ({ default: mod.Skills })));
+const AdditionalSkills = lazy(() => import("@/components/AdditionalSkills").then(mod => ({ default: mod.AdditionalSkills })));
+const Projects = lazy(() => import("@/components/Projects").then(mod => ({ default: mod.Projects })));
+const Contact = lazy(() => import("@/components/Contact").then(mod => ({ default: mod.Contact })));
 
 const LoadingSpinner = () => (
   <div className="flex items-center justify-center min-h-[200px]">
