@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Stars, Text } from '@react-three/drei';
-import { useRef } from 'react';
+import { useRef, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
 
@@ -22,21 +22,20 @@ function Box() {
 
 function FloatingText() {
   return (
-    <mesh position={[2, 0, 0]}>
-      <Text
-        color="white"
-        fontSize={0.5}
-        maxWidth={200}
-        lineHeight={1}
-        letterSpacing={0.02}
-        textAlign="left"
-        font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-        anchorX="center"
-        anchorY="middle"
-      >
-        React
-      </Text>
-    </mesh>
+    <Text
+      position={[2, 0, 0]}
+      color="white"
+      fontSize={0.5}
+      maxWidth={200}
+      lineHeight={1}
+      letterSpacing={0.02}
+      textAlign="left"
+      font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
+      anchorX="center"
+      anchorY="middle"
+    >
+      React
+    </Text>
   );
 }
 
@@ -48,28 +47,36 @@ export const ThreeBanner = () => {
       className="w-full h-[40vh] md:h-[50vh] relative"
     >
       <Canvas
-        camera={{ position: [0, 0, 5] }}
+        camera={{ 
+          position: [0, 0, 5],
+          fov: 75,
+          near: 0.1,
+          far: 1000
+        }}
         className="bg-background/80 backdrop-blur-sm"
       >
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} />
-        <Box />
-        <FloatingText />
-        <Stars 
-          radius={100}
-          depth={50}
-          count={5000}
-          factor={4}
-          saturation={0}
-          fade
-          speed={1}
-        />
-        <OrbitControls 
-          enableZoom={false}
-          enablePan={false}
-          minPolarAngle={Math.PI / 2}
-          maxPolarAngle={Math.PI / 2}
-        />
+        <Suspense fallback={null}>
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} />
+          <Box />
+          <FloatingText />
+          <Stars 
+            radius={100}
+            depth={50}
+            count={5000}
+            factor={4}
+            saturation={0}
+            fade
+            speed={1}
+          />
+          <OrbitControls 
+            enableZoom={false}
+            enablePan={false}
+            minPolarAngle={Math.PI / 2}
+            maxPolarAngle={Math.PI / 2}
+            makeDefault
+          />
+        </Suspense>
       </Canvas>
     </motion.div>
   );
