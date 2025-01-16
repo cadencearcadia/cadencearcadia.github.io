@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { ArrowDown } from "lucide-react";
-import { ThreeBanner } from "./ThreeBanner";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
@@ -24,15 +23,13 @@ export const Hero = () => {
   };
 
   return (
-    <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-start items-center px-4 sm:px-6 lg:px-8 relative">
-      <ThreeBanner />
-      
+    <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 relative">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.6 }}
-        className="text-center w-full max-w-3xl mx-auto space-y-6 backdrop-blur-sm bg-background/50 p-4 sm:p-6 lg:p-8 rounded-lg mt-8"
+        className="text-center w-full max-w-3xl mx-auto space-y-6 backdrop-blur-sm bg-background/50 p-4 sm:p-6 lg:p-8 rounded-lg"
       >
         <motion.span 
           initial={{ opacity: 0 }}
