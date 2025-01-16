@@ -10,6 +10,7 @@ function Box() {
   return (
     <mesh
       ref={mesh}
+      position={[0, 0, 0]}
       rotation={[0, 0, 0]}
       scale={[1, 1, 1]}
     >
@@ -54,7 +55,15 @@ export const ThreeBanner = () => {
         <pointLight position={[10, 10, 10]} />
         <Box />
         <FloatingText />
-        <Stars />
+        <Stars 
+          radius={100}
+          depth={50}
+          count={5000}
+          factor={4}
+          saturation={0}
+          fade
+          speed={1}
+        />
         <OrbitControls 
           enableZoom={false}
           enablePan={false}
