@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => ({
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'framer-motion'],
-          ui: ['@/components/ui/index.ts'],
+          ui: ['./src/components/ui/index.ts'],
         },
       },
     },
