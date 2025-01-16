@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stars } from '@react-three/drei';
+import { OrbitControls, Stars, Text } from '@react-three/drei';
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
@@ -22,8 +22,19 @@ function Box() {
 function FloatingText() {
   return (
     <mesh position={[2, 0, 0]}>
-      <textGeometry args={['React', { size: 0.5, height: 0.1 }]} />
-      <meshStandardMaterial color="white" />
+      <Text
+        color="white"
+        fontSize={0.5}
+        maxWidth={200}
+        lineHeight={1}
+        letterSpacing={0.02}
+        textAlign="left"
+        font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
+        anchorX="center"
+        anchorY="middle"
+      >
+        React
+      </Text>
     </mesh>
   );
 }
@@ -44,7 +55,12 @@ export const ThreeBanner = () => {
         <Box />
         <FloatingText />
         <Stars />
-        <OrbitControls enableZoom={false} />
+        <OrbitControls 
+          enableZoom={false}
+          enablePan={false}
+          minPolarAngle={Math.PI / 2}
+          maxPolarAngle={Math.PI / 2}
+        />
       </Canvas>
     </motion.div>
   );
