@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 
-export const About = () => {
+const About = () => {
   return (
     <section className="py-20 px-4 relative" id="about">
       <div 
@@ -45,3 +45,5 @@ export const About = () => {
     </section>
   );
 };
+
+export default About;

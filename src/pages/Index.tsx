@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 
 // Lazy load components
 const Navigation = lazy(() => import("@/components/Navigation").then(mod => ({ default: mod.Navigation })));
-const Hero = lazy(() => import("@/components/Hero").then(mod => ({ default: mod.Hero })));
-const About = lazy(() => import("@/components/About").then(mod => ({ default: mod.About })));
+const Hero = lazy(() => import("@/components/Hero"));
+const About = lazy(() => import("@/components/About"));
 const Skills = lazy(() => import("@/components/Skills").then(mod => ({ default: mod.Skills })));
 const AdditionalSkills = lazy(() => import("@/components/AdditionalSkills").then(mod => ({ default: mod.AdditionalSkills })));
 const Projects = lazy(() => import("@/components/Projects").then(mod => ({ default: mod.Projects })));

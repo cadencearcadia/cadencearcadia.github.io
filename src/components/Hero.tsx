@@ -4,7 +4,7 @@ import { ArrowDown } from "lucide-react";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-export const Hero = () => {
+const Hero = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -83,3 +83,5 @@ export const Hero = () => {
     </section>
   );
 };
+
+export default Hero;
