@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { ThemeToggle } from "./ThemeToggle";
 
 const menuItems = [
   { label: "Home", href: "#" },
@@ -39,6 +40,7 @@ export const Navigation = () => {
               {item.label}
             </Button>
           ))}
+          <ThemeToggle />
         </div>
 
         {/* Mobile Menu */}
@@ -60,6 +62,7 @@ export const Navigation = () => {
                   {item.label}
                 </Button>
               ))}
+              <ThemeToggle />
             </div>
           </SheetContent>
         </Sheet>
