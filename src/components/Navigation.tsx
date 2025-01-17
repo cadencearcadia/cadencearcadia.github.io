@@ -44,28 +44,31 @@ export const Navigation = () => {
         </div>
 
         {/* Mobile Menu */}
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-64">
-            <div className="flex flex-col gap-4 mt-8">
-              {menuItems.map((item) => (
-                <Button
-                  key={item.href}
-                  variant="ghost"
-                  className="justify-start"
-                  onClick={() => scrollToSection(item.href)}
-                >
-                  {item.label}
-                </Button>
-              ))}
-              <ThemeToggle />
-            </div>
-          </SheetContent>
-        </Sheet>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-64">
+              <div className="flex flex-col gap-4 mt-8">
+                <span className="text-lg font-bold px-4">Jacob Buck</span>
+                {menuItems.map((item) => (
+                  <Button
+                    key={item.href}
+                    variant="ghost"
+                    className="justify-start"
+                    onClick={() => scrollToSection(item.href)}
+                  >
+                    {item.label}
+                  </Button>
+                ))}
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </nav>
   );
