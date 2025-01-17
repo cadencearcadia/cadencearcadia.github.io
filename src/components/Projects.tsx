@@ -10,6 +10,7 @@ const projects = [
     tech: ["React", "Redux", "Node.js", "MongoDB"],
     github: "#",
     live: "#",
+    image: "photo-1488590528505-98d2b5aba04b",
   },
   {
     title: "Task Management App",
@@ -17,6 +18,7 @@ const projects = [
     tech: ["React", "TypeScript", "React Query", "Socket.io"],
     github: "#",
     live: "#",
+    image: "photo-1461749280684-dccba630e2f6",
   },
   {
     title: "Analytics Dashboard",
@@ -24,6 +26,7 @@ const projects = [
     tech: ["React", "D3.js", "Material-UI", "Firebase"],
     github: "#",
     live: "#",
+    image: "photo-1486312338219-ce68d2c6f44d",
   },
 ];
 
@@ -61,7 +64,14 @@ export const Projects = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full backdrop-blur-sm bg-card/50">
+              <Card className="h-full backdrop-blur-sm bg-card/50 overflow-hidden">
+                <div className="w-full h-48 relative">
+                  <img
+                    src={`https://images.unsplash.com/${project.image}?auto=format&fit=crop&w=800&q=80`}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
                 <CardContent className="p-4 sm:p-6 space-y-4">
                   <h3 className="text-lg sm:text-xl font-semibold">{project.title}</h3>
                   <p className="text-sm sm:text-base text-muted-foreground">{project.description}</p>
