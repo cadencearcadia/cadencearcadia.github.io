@@ -5,11 +5,11 @@ import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { ThemeToggle } from "./ThemeToggle";
 
 const menuItems = [
-  { label: "Home", href: "#" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "home" },
+  { label: "About", href: "about" },
+  { label: "Skills", href: "skills" },
+  { label: "Projects", href: "projects" },
+  { label: "Contact", href: "contact" },
 ];
 
 export const Navigation = () => {
@@ -17,7 +17,9 @@ export const Navigation = () => {
 
   const scrollToSection = (href: string) => {
     setIsOpen(false);
-    const element = document.querySelector(href);
+    if (!href) return;
+    
+    const element = document.querySelector(`#${href}`);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
