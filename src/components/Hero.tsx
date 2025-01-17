@@ -23,7 +23,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 relative">
+    <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 relative mt-16">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 20 }}
