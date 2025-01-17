@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import { Button } from "./ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -76,14 +76,8 @@ export const Projects = () => {
                     ))}
                   </div>
                 </CardContent>
-                <CardFooter className="p-4 sm:p-6 pt-0 gap-2 sm:gap-4 flex-wrap">
-                  <Button variant="outline" size="sm" asChild className="w-full sm:w-auto">
-                    <a href={project.github} target="_blank" rel="noopener">
-                      <Github className="mr-2 h-4 w-4" />
-                      Code
-                    </a>
-                  </Button>
-                  <Button size="sm" asChild className="w-full sm:w-auto">
+                <CardFooter className="p-4 sm:p-6 pt-0">
+                  <Button size="sm" asChild className="w-full">
                     <a href={project.live} target="_blank" rel="noopener">
                       <ExternalLink className="mr-2 h-4 w-4" />
                       Live Demo
