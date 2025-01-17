@@ -37,7 +37,7 @@ const Hero = () => {
           transition={{ delay: 0.2 }}
           className="text-sm sm:text-base uppercase tracking-wider text-muted-foreground"
         >
-          React Engineer
+          Full Stack Developer & Record Label Owner
         </motion.span>
         <motion.h1 
           initial={{ opacity: 0 }}
@@ -45,7 +45,7 @@ const Hero = () => {
           transition={{ delay: 0.4 }}
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
         >
-          Building exceptional web experiences with React
+          From Music Industry Success to React Development Excellence
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0 }}
@@ -53,8 +53,7 @@ const Hero = () => {
           transition={{ delay: 0.6 }}
           className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto"
         >
-          Specialized in creating performant and scalable React applications with a
-          focus on user experience and clean code.
+          With over 600 million streams in music and years of React expertise, I blend creative vision with technical excellence to build exceptional web experiences.
         </motion.p>
         <motion.div 
           initial={{ opacity: 0 }}
