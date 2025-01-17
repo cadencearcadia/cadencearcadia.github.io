@@ -1,25 +1,27 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import { 
-  Blocks, 
-  FileCode2, 
-  Database, 
-  TestTube, 
-  Workflow, 
-  Puzzle,
-  Keyboard,
-  BookDashed,
+  Code2,
+  Palette,
+  FileJson,
+  Blocks,
+  Wind,
+  Rocket,
+  ArrowRight,
+  FileCode2,
+  Box,
 } from "lucide-react";
 
 const skills = [
-  { name: "React", level: 95, icon: <Blocks className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "TypeScript", level: 50, icon: <FileCode2 className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "Next.js", level: 85, icon: <Workflow className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "Redux", level: 88, icon: <Puzzle className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "React Query", level: 92, icon: <Database className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "Testing", level: 85, icon: <TestTube className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "VIM", level: 30, icon: <Keyboard className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "Python", level: 15, icon: <BookDashed className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "HTML", level: 100, icon: <Code2 className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "CSS", level: 95, icon: <Palette className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "JavaScript", level: 90, icon: <FileJson className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "React", level: 80, icon: <Blocks className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "Tailwind CSS", level: 80, icon: <Wind className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "Vite", level: 80, icon: <Rocket className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "Next.js", level: 65, icon: <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "TypeScript", level: 40, icon: <FileCode2 className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "Three.js", level: 30, icon: <Box className="w-5 h-5 sm:w-6 sm:h-6" /> },
 ];
 
 export const Skills = () => {
@@ -45,7 +47,7 @@ export const Skills = () => {
           <span className="text-sm sm:text-base uppercase tracking-wider text-muted-foreground">
             Skills
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Technical Expertise</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Frontend Expertise</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {skills.map((skill, index) => (
