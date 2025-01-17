@@ -13,15 +13,60 @@ import {
 } from "lucide-react";
 
 const skills = [
-  { name: "HTML", level: 100, icon: <Code2 className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "CSS", level: 95, icon: <Palette className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "JavaScript", level: 90, icon: <FileJson className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "React", level: 80, icon: <Blocks className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "Tailwind CSS", level: 80, icon: <Wind className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "Vite", level: 80, icon: <Rocket className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "Next.js", level: 65, icon: <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "TypeScript", level: 40, icon: <FileCode2 className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  { name: "Three.js", level: 30, icon: <Box className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { 
+    name: "HTML", 
+    level: 100, 
+    icon: <Code2 className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Semantic markup and accessibility best practices"
+  },
+  { 
+    name: "CSS", 
+    level: 95, 
+    icon: <Palette className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Advanced styling and responsive design"
+  },
+  { 
+    name: "JavaScript", 
+    level: 90, 
+    icon: <FileJson className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Modern ES6+ features and DOM manipulation"
+  },
+  { 
+    name: "React", 
+    level: 80, 
+    icon: <Blocks className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Component-based architecture and hooks"
+  },
+  { 
+    name: "Tailwind CSS", 
+    level: 80, 
+    icon: <Wind className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Utility-first CSS framework expertise"
+  },
+  { 
+    name: "Vite", 
+    level: 80, 
+    icon: <Rocket className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Modern build tool configuration"
+  },
+  { 
+    name: "Next.js", 
+    level: 65, 
+    icon: <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Server-side rendering and static generation"
+  },
+  { 
+    name: "TypeScript", 
+    level: 40, 
+    icon: <FileCode2 className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Static typing and interface definitions"
+  },
+  { 
+    name: "Three.js", 
+    level: 30, 
+    icon: <Box className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "3D graphics and animations"
+  },
 ];
 
 export const Skills = () => {
@@ -48,6 +93,9 @@ export const Skills = () => {
             Skills
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Frontend Expertise</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Core technologies and frameworks that power modern web applications
+          </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {skills.map((skill, index) => (
@@ -70,6 +118,9 @@ export const Skills = () => {
                             {skill.level}%
                           </span>
                         </div>
+                        <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                          {skill.description}
+                        </p>
                       </div>
                     </div>
                     <motion.div
