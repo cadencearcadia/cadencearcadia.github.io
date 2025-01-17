@@ -31,13 +31,16 @@ const About = () => {
         <Card className="backdrop-blur-sm bg-card/50">
           <CardContent className="p-6 space-y-4">
             <p className="text-lg leading-relaxed">
-              Hi, I’m Jacob Buck—a seasoned coder with over 20 years of experience and a passion for blending creativity with technology. With over 5 years of expertise in React development, I specialize in building scalable web applications that combine elegant design with robust functionality. My skills include modern React practices, state management solutions, and performance optimization techniques.
+              My name is Jacob Buck, and my journey into programming began at the age of 14, building anime websites using HTML and PHP. This early exploration ignited a lifelong passion for coding and creativity. In my early 20s, I honed my technical skills in the Oil & Gas industry, developing and managing CMS platforms with PHP, MySQL, and jQuery.
             </p>
             <p className="text-lg leading-relaxed">
-              As a former owner of a dance music record label, I bring a creative edge to my work, crafting intuitive user interfaces that resonate with users. I’m passionate about writing clean, maintainable code and delivering high-quality solutions that meet both user needs and business objectives.
+              At 23, I followed my passion for dance music, launching the first of five record labels. Over the next seven years, our labels achieved remarkable success, amassing over 600 million streams across 1,500 releases, collaborating with international superstars, and being featured in the world's biggest magazines and publications. During this time, I gained invaluable experience in marketing, PR management, leadership, and music publishing. I also designed artwork and edited videos, becoming proficient in tools like Photoshop, InDesign, and After Effects.
             </p>
             <p className="text-lg leading-relaxed">
-              Fueled by an insatiable curiosity, I’m driven to uncover how things work at their core. Living in California inspires my innovative spirit, where I tackle challenges head-on with resourcefulness and determination. Whether refining code or solving complex problems, I strive to turn big ideas into elegant, impactful solutions.
+              In 2019, I transitioned from the music industry back to my roots in programming, diving into React development. Over the past five years, I've specialized in building scalable, high-performing web applications that blend intuitive design with powerful functionality. My expertise includes modern React practices, state management solutions, and performance optimization.
+            </p>
+            <p className="text-lg leading-relaxed">
+              Driven by a deep curiosity, I approach every challenge with resourcefulness and determination. I thrive on transforming ambitious ideas into elegant, impactful solutions. Whether refining code, crafting user interfaces, or solving complex problems, I bring a unique blend of technical expertise and creative vision to every project.
             </p>
           </CardContent>
         </Card>
