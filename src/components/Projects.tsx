@@ -13,7 +13,7 @@ const projects = [
   },
   {
     title: "Cabin Management App",
-    description: "Real-time cabin management, guest management and analytics dashboard with React Query and Supabase",
+    description: "Real-time guest management and analytics dashboard with React Query and Supabase",
     tech: ["React", "React Query", "Supabase"],
     live: "https://oasis-bookings-app.netlify.app",
     image: "photo-1461749280684-dccba630e2f6",
