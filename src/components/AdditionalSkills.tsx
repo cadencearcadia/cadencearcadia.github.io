@@ -1,64 +1,50 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import { 
-  Brush,
-  Lightbulb,
-  Users,
-  Brain,
-  Target,
-  Languages,
-  Presentation,
-  HeartHandshake,
+  Database,
+  Server,
+  Code2,
+  FileCode,
+  Code,
+  Blocks,
 } from "lucide-react";
 
 const additionalSkills = [
   { 
-    name: "UI/UX Design", 
-    level: 85, 
-    icon: <Brush className="w-5 h-5 sm:w-6 sm:h-6" />,
-    description: "Creating intuitive and engaging user interfaces"
-  },
-  { 
-    name: "Problem Solving", 
-    level: 92, 
-    icon: <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6" />,
-    description: "Analytical thinking and creative solution finding"
-  },
-  { 
-    name: "Team Leadership", 
-    level: 88, 
-    icon: <Users className="w-5 h-5 sm:w-6 sm:h-6" />,
-    description: "Leading and mentoring development teams"
-  },
-  { 
-    name: "Machine Learning", 
-    level: 75, 
-    icon: <Brain className="w-5 h-5 sm:w-6 sm:h-6" />,
-    description: "Basic ML concepts and implementations"
-  },
-  { 
-    name: "Project Management", 
-    level: 90, 
-    icon: <Target className="w-5 h-5 sm:w-6 sm:h-6" />,
-    description: "Agile methodologies and project coordination"
-  },
-  { 
-    name: "Communication", 
-    level: 95, 
-    icon: <Presentation className="w-5 h-5 sm:w-6 sm:h-6" />,
-    description: "Clear and effective technical communication"
-  },
-  { 
-    name: "Languages", 
+    name: "PHP", 
     level: 80, 
-    icon: <Languages className="w-5 h-5 sm:w-6 sm:h-6" />,
-    description: "English (Native), Spanish (Fluent)"
+    icon: <Code2 className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Building server-side applications and APIs"
   },
   { 
-    name: "Collaboration", 
-    level: 93, 
-    icon: <HeartHandshake className="w-5 h-5 sm:w-6 sm:h-6" />,
-    description: "Cross-functional team collaboration"
+    name: "MySQL/SQL", 
+    level: 70, 
+    icon: <Database className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Database design and management"
+  },
+  { 
+    name: "Supabase", 
+    level: 65, 
+    icon: <Database className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Backend as a Service platform"
+  },
+  { 
+    name: "Node.js", 
+    level: 60, 
+    icon: <Server className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Server-side JavaScript runtime"
+  },
+  { 
+    name: "Laravel", 
+    level: 10, 
+    icon: <FileCode className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "PHP web application framework"
+  },
+  { 
+    name: "Django", 
+    level: 10, 
+    icon: <Blocks className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Python web framework"
   },
 ];
 
@@ -83,13 +69,13 @@ export const AdditionalSkills = () => {
       >
         <div className="text-center space-y-4">
           <span className="text-sm sm:text-base uppercase tracking-wider text-muted-foreground">
-            Additional Skills
+            Backend Skills
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-            Beyond Technical Expertise
+            Server-Side Expertise
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Complementary skills and competencies that enhance my ability to deliver comprehensive solutions
+            Backend technologies and frameworks that power robust server-side applications
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
