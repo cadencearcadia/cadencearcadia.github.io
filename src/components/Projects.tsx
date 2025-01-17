@@ -60,6 +60,11 @@ export const Projects = () => {
                     src={project.image.startsWith('/') ? project.image : `https://images.unsplash.com/${project.image}?auto=format&fit=crop&w=800&q=80`}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                    width={800}
+                    height={400}
+                    fetchPriority={index === 0 ? "high" : "low"}
                   />
                 </div>
                 <CardContent className="p-4 sm:p-6 space-y-4">
@@ -92,3 +97,9 @@ export const Projects = () => {
     </section>
   );
 };
+
+// This component displays a portfolio section with featured projects.
+// Each project is displayed in a card with an image, title, description,
+// tech stack, and a link to the live demo. Images are lazy loaded and
+// optimized for performance, with the first image having high priority
+// loading for better LCP (Largest Contentful Paint) metrics.
