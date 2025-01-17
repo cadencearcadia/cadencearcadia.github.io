@@ -1,56 +1,63 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import { 
-  Database,
-  Server,
-  Code2,
-  FileCode,
-  Code,
-  Blocks,
+  Megaphone,
+  MessageSquare,
+  Image,
+  Music,
+  Play,
+  Newspaper,
+  PenTool,
 } from "lucide-react";
 
-const backendSkills = [
+const additionalSkills = [
   { 
-    name: "PHP", 
+    name: "Marketing", 
+    level: 95, 
+    icon: <Megaphone className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Digital marketing strategy and implementation"
+  },
+  { 
+    name: "PR Relations", 
+    level: 90, 
+    icon: <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Public relations and media communication"
+  },
+  { 
+    name: "Photoshop", 
+    level: 95, 
+    icon: <Image className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Advanced photo editing and manipulation"
+  },
+  { 
+    name: "Music Publishing", 
     level: 80, 
-    icon: <Code2 className="w-5 h-5 sm:w-6 sm:h-6" />,
-    description: "Building server-side applications and APIs"
+    icon: <Music className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Music licensing and distribution"
   },
   { 
-    name: "MySQL/SQL", 
-    level: 70, 
-    icon: <Database className="w-5 h-5 sm:w-6 sm:h-6" />,
-    description: "Database design and management"
-  },
-  { 
-    name: "Supabase", 
+    name: "After Effects", 
     level: 65, 
-    icon: <Database className="w-5 h-5 sm:w-6 sm:h-6" />,
-    description: "Backend as a Service platform"
+    icon: <Play className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Motion graphics and visual effects"
   },
   { 
-    name: "Node.js", 
+    name: "InDesign", 
     level: 60, 
-    icon: <Server className="w-5 h-5 sm:w-6 sm:h-6" />,
-    description: "Server-side JavaScript runtime"
+    icon: <Newspaper className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Print and digital publication design"
   },
   { 
-    name: "Laravel", 
-    level: 10, 
-    icon: <FileCode className="w-5 h-5 sm:w-6 sm:h-6" />,
-    description: "PHP web application framework"
-  },
-  { 
-    name: "Django", 
-    level: 10, 
-    icon: <Blocks className="w-5 h-5 sm:w-6 sm:h-6" />,
-    description: "Python web framework"
+    name: "Illustrator", 
+    level: 30, 
+    icon: <PenTool className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Vector graphics and logo design"
   },
 ];
 
-export const BackEndSkills = () => {
+export const AdditionalSkills = () => {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 relative" id="backend-skills">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 relative" id="additional-skills">
       <div 
         className="absolute inset-0 -z-10 opacity-10"
         style={{
@@ -69,17 +76,17 @@ export const BackEndSkills = () => {
       >
         <div className="text-center space-y-4">
           <span className="text-sm sm:text-base uppercase tracking-wider text-muted-foreground">
-            Backend Skills
+            Additional Skills
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-            Server-Side Expertise
+            Creative & Marketing Expertise
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Backend technologies and frameworks that power robust server-side applications
+            Diverse skillset in creative design, marketing, and multimedia production
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-          {backendSkills.map((skill, index) => (
+          {additionalSkills.map((skill, index) => (
             <motion.div
               key={skill.name}
               initial={{ opacity: 0, y: 20 }}
@@ -87,7 +94,7 @@ export const BackEndSkills = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="backdrop-blur-sm bg-card/50">
+              <Card className="backdrop-blur-sm bg-card/50 h-full">
                 <CardContent className="p-4 sm:p-6">
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
