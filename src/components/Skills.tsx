@@ -1,45 +1,27 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import { 
-  Database,
-  Server,
-  FileCode2,
   Code2,
-  Blocks,
+  Palette,
   FileJson,
+  Blocks,
+  Wind,
+  Rocket,
+  ArrowRight,
+  FileCode2,
+  Box,
 } from "lucide-react";
 
 const skills = [
-  { 
-    name: "PHP", 
-    level: 80, 
-    icon: <FileCode2 className="w-5 h-5 sm:w-6 sm:h-6" />,
-  },
-  { 
-    name: "MySQL/SQL", 
-    level: 70, 
-    icon: <Database className="w-5 h-5 sm:w-6 sm:h-6" />,
-  },
-  { 
-    name: "Supabase", 
-    level: 65, 
-    icon: <Database className="w-5 h-5 sm:w-6 sm:h-6" />,
-  },
-  { 
-    name: "Node.js", 
-    level: 60, 
-    icon: <Server className="w-5 h-5 sm:w-6 sm:h-6" />,
-  },
-  { 
-    name: "Laravel", 
-    level: 10, 
-    icon: <Code2 className="w-5 h-5 sm:w-6 sm:h-6" />,
-  },
-  { 
-    name: "Django", 
-    level: 10, 
-    icon: <Blocks className="w-5 h-5 sm:w-6 sm:h-6" />,
-  },
+  { name: "HTML", level: 100, icon: <Code2 className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "CSS", level: 95, icon: <Palette className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "JavaScript", level: 90, icon: <FileJson className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "React", level: 80, icon: <Blocks className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "Tailwind CSS", level: 80, icon: <Wind className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "Vite", level: 80, icon: <Rocket className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "Next.js", level: 65, icon: <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "TypeScript", level: 40, icon: <FileCode2 className="w-5 h-5 sm:w-6 sm:h-6" /> },
+  { name: "Three.js", level: 30, icon: <Box className="w-5 h-5 sm:w-6 sm:h-6" /> },
 ];
 
 export const Skills = () => {
@@ -65,7 +47,7 @@ export const Skills = () => {
           <span className="text-sm sm:text-base uppercase tracking-wider text-muted-foreground">
             Skills
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Backend Expertise</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Frontend Expertise</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {skills.map((skill, index) => (
