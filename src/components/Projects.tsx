@@ -9,7 +9,7 @@ const projects = [
     description: "A full-featured reservation solution built with React, Next.js, and Supabase",
     tech: ["React", "Next.js", "Node.js", "Supabase"],
     live: "https://the-wild-oasis-website-bice.vercel.app",
-    image: "photo-1488590528505-98d2b5aba04b",
+    image: "/lovable-uploads/44896dd8-0840-425a-af0b-724b5a3e3e81.png",
   },
   {
     title: "Cabin Management App",
@@ -57,7 +57,7 @@ export const Projects = () => {
               <Card className="h-full backdrop-blur-sm bg-card/50 overflow-hidden">
                 <div className="w-full h-48 relative">
                   <img
-                    src={`https://images.unsplash.com/${project.image}?auto=format&fit=crop&w=800&q=80`}
+                    src={project.image.startsWith('/') ? project.image : `https://images.unsplash.com/${project.image}?auto=format&fit=crop&w=800&q=80`}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   />
