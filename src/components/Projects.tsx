@@ -5,28 +5,18 @@ import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
-    title: "E-commerce Platform",
-    description: "A full-featured e-commerce solution built with React and Redux",
-    tech: ["React", "Redux", "Node.js", "MongoDB"],
-    github: "#",
-    live: "#",
+    title: "Cabin Reservation Platform",
+    description: "A full-featured reservation solution built with React, Next.js, and Supabase",
+    tech: ["React", "Next.js", "Node.js", "Supabase"],
+    live: "https://the-wild-oasis-website-bice.vercel.app",
     image: "photo-1488590528505-98d2b5aba04b",
   },
   {
-    title: "Task Management App",
-    description: "Real-time task management with React Query and WebSocket",
-    tech: ["React", "TypeScript", "React Query", "Socket.io"],
-    github: "#",
-    live: "#",
+    title: "Cabin Management App",
+    description: "Real-time cabin management, guest management and analytics dashboard with React Query and Supabase",
+    tech: ["React", "React Query", "Supabase"],
+    live: "https://oasis-bookings-app.netlify.app",
     image: "photo-1461749280684-dccba630e2f6",
-  },
-  {
-    title: "Analytics Dashboard",
-    description: "Data visualization dashboard with real-time updates",
-    tech: ["React", "D3.js", "Material-UI", "Firebase"],
-    github: "#",
-    live: "#",
-    image: "photo-1486312338219-ce68d2c6f44d",
   },
 ];
 
