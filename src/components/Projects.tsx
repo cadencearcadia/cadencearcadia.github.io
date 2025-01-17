@@ -16,7 +16,7 @@ const projects = [
     description: "Real-time guest management and analytics dashboard with React Query and Supabase",
     tech: ["React", "React Query", "Supabase"],
     live: "https://oasis-bookings-app.netlify.app",
-    image: "photo-1461749280684-dccba630e2f6",
+    image: "/lovable-uploads/a7673e4c-528b-4fdf-97ff-12aa048e569a.png",
   },
 ];
 
