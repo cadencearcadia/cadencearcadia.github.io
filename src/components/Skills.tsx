@@ -10,6 +10,7 @@ import {
   ArrowRight,
   FileCode2,
   Box,
+  GitBranch,
 } from "lucide-react";
 
 const skills = [
@@ -48,6 +49,12 @@ const skills = [
     level: 80, 
     icon: <Rocket className="w-5 h-5 sm:w-6 sm:h-6" />,
     description: "Modern build tool configuration"
+  },
+   { 
+    name: "Git", 
+    level: 70, 
+    icon: <GitBranch className="w-5 h-5 sm:w-6 sm:h-6" />,
+    description: "Version control system for tracking changes"
   },
   { 
     name: "Next.js", 
