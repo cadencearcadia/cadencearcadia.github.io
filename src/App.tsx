@@ -24,7 +24,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <BrowserRouter basename="/">
           <Suspense fallback={
             <div className="min-h-screen flex items-center justify-center">
               <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
@@ -32,6 +32,7 @@ const App = () => (
           }>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="*" element={<Index />} /> {/* Add catch-all route */}
             </Routes>
           </Suspense>
         </BrowserRouter>
