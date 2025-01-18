@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { Menu } from "lucide-react";
+import { Menu, Home, User, Code, FolderGit2, Mail } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { ThemeToggle } from "./ThemeToggle";
 
 const menuItems = [
-  { label: "Home", href: "home" },
-  { label: "About", href: "about" },
-  { label: "Skills", href: "skills" },
-  { label: "Projects", href: "projects" },
-  { label: "Contact", href: "contact" },
+  { label: "Home", href: "home", icon: Home },
+  { label: "About", href: "about", icon: User },
+  { label: "Skills", href: "skills", icon: Code },
+  { label: "Projects", href: "projects", icon: FolderGit2 },
+  { label: "Contact", href: "contact", icon: Mail },
 ];
 
 export const Navigation = () => {
@@ -54,19 +54,27 @@ export const Navigation = () => {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-64">
-              <div className="flex flex-col gap-4 mt-8">
-                <span className="text-lg font-bold px-4">Jacob Buck</span>
-                {menuItems.map((item) => (
-                  <Button
-                    key={item.href}
-                    variant="ghost"
-                    className="justify-start"
-                    onClick={() => scrollToSection(item.href)}
-                  >
-                    {item.label}
-                  </Button>
-                ))}
+            <SheetContent side="right" className="w-72">
+              <div className="flex flex-col gap-6">
+                <div className="border-b pb-4">
+                  <span className="text-xl font-bold">Jacob Buck</span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  {menuItems.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <Button
+                        key={item.href}
+                        variant="ghost"
+                        className="justify-start gap-3 w-full text-base"
+                        onClick={() => scrollToSection(item.href)}
+                      >
+                        <Icon className="h-5 w-5" />
+                        {item.label}
+                      </Button>
+                    );
+                  })}
+                </div>
               </div>
             </SheetContent>
           </Sheet>
