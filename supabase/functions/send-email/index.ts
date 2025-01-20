@@ -1,5 +1,5 @@
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
+import { serve } from "https://deno.land/std@0.208.0/http/server.ts";
+import { SmtpClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
 
 const GMAIL_USER = Deno.env.get('GMAIL_USER');
 const GMAIL_APP_PASSWORD = Deno.env.get('GMAIL_APP_PASSWORD');
@@ -40,13 +40,16 @@ serve(async (req) => {
       throw new Error('Missing required fields');
     }
 
-    const client = new SmtpClient();
-
-    await client.connectTLS({
-      hostname: "smtp.gmail.com",
-      port: 465,
-      username: GMAIL_USER,
-      password: GMAIL_APP_PASSWORD,
+    const client = new SmtpClient({
+      connection: {
+        hostname: "smtp.gmail.com",
+        port: 465,
+        tls: true,
+        auth: {
+          username: GMAIL_USER,
+          password: GMAIL_APP_PASSWORD,
+        },
+      },
     });
 
     await client.send({
@@ -59,8 +62,6 @@ Email: ${email}
 Message: ${message}
       `,
     });
-
-    await client.close();
 
     console.log('Email sent successfully');
 
