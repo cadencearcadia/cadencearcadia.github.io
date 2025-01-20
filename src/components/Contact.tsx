@@ -19,7 +19,6 @@ export const Contact = () => {
     const message = formData.get('message') as string;
 
     try {
-      // Get the access key from environment variables
       const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
       
       if (!accessKey) {
@@ -32,13 +31,10 @@ export const Contact = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: accessKey, // Add the access key here
+          access_key: accessKey,
           name,
           email,
           message,
-          from_name: "Portfolio Contact Form",
-          subject: "New Contact Form Submission",
-          to: 'jacob.buck@gmail.com'
         }),
       });
 
@@ -47,11 +43,11 @@ export const Contact = () => {
       if (result.success) {
         toast({
           title: "Message sent successfully!",
-          description: "Thank you for your message. We'll get back to you soon.",
+          description: "Thank you for your message. I'll get back to you soon.",
         });
         (e.target as HTMLFormElement).reset();
       } else {
-        throw new Error(result.message);
+        throw new Error(result.message || 'Failed to send message');
       }
     } catch (error) {
       console.error('Form submission error:', error);
