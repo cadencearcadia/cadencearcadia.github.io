@@ -28,8 +28,8 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response(
       JSON.stringify({ error: 'Method not allowed' }),
       { 
-        status: 405,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        status: 405
       }
     );
   }
