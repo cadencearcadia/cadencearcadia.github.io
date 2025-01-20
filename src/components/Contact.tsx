@@ -20,9 +20,9 @@ export const Contact = () => {
     const message = formData.get('message') as string;
 
     try {
-      console.log('Sending request to edge function...');
+      console.log('Sending request to edge function with data:', { name, email, message });
       const { data, error } = await supabase.functions.invoke('send-email', {
-        body: { name, email, message },
+        body: JSON.stringify({ name, email, message }),
         headers: {
           'Content-Type': 'application/json',
         },
