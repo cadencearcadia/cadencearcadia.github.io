@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { SmtpClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
+import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/client/smtp_client.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -42,7 +42,7 @@ const handler = async (req: Request): Promise<Response> => {
       hasPassword: !!Deno.env.get("GMAIL_APP_PASSWORD")
     });
 
-    const client = new SmtpClient({
+    const client = new SMTPClient({
       connection: {
         hostname: "smtp.gmail.com",
         port: 465,
