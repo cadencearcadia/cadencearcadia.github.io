@@ -26,7 +26,10 @@ const handler = async (req: Request): Promise<Response> => {
 
   if (req.method !== 'POST') {
     return new Response(
-      JSON.stringify({ error: 'Method not allowed' }),
+      JSON.stringify({ 
+        success: false, 
+        error: 'Method not allowed' 
+      }),
       { 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         status: 405
@@ -35,8 +38,13 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, email, message } = await req.json() as EmailRequest;
+    const requestData = await req.json();
+    const { name, email, message } = requestData as EmailRequest;
     
+    if (!name || !email || !message) {
+      throw new Error('Missing required fields');
+    }
+
     console.log('Creating SMTP client with credentials:', {
       username: Deno.env.get("GMAIL_USER"),
       hasPassword: !!Deno.env.get("GMAIL_APP_PASSWORD")
@@ -72,7 +80,10 @@ const handler = async (req: Request): Promise<Response> => {
     await client.close();
 
     return new Response(
-      JSON.stringify({ success: true, message: "Email sent successfully" }),
+      JSON.stringify({ 
+        success: true, 
+        message: "Email sent successfully" 
+      }),
       {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
         status: 200,
