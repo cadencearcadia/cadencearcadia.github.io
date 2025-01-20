@@ -22,8 +22,13 @@ export const Contact = () => {
     // Create mailto link with form data
     const mailtoLink = `mailto:jacob.buck@gmail.com?subject=Contact Form Submission from ${name}&body=From: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${encodeURIComponent(message)}`;
     
-    // Open email client
-    window.location.href = mailtoLink;
+    // Create a temporary anchor element
+    const tempLink = document.createElement('a');
+    tempLink.href = mailtoLink;
+    tempLink.target = '_self'; // Open in the same window
+    document.body.appendChild(tempLink);
+    tempLink.click();
+    document.body.removeChild(tempLink);
     
     toast({
       title: "Email client opened!",
