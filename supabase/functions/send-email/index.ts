@@ -38,8 +38,30 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const requestData = await req.json();
-    console.log('Received request data:', requestData);
+    // Clone the request before reading it
+    const clonedReq = req.clone();
+    const rawBody = await clonedReq.text();
+    console.log('Raw request body:', rawBody);
+
+    let requestData;
+    try {
+      requestData = JSON.parse(rawBody);
+    } catch (parseError) {
+      console.error('JSON parsing error:', parseError);
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'Invalid JSON in request body',
+          details: parseError.message
+        }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 400
+        }
+      );
+    }
+
+    console.log('Parsed request data:', requestData);
     
     const { name, email, message } = requestData as EmailRequest;
     
