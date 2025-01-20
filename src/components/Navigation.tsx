@@ -17,7 +17,11 @@ export const Navigation = () => {
 
   const scrollToSection = (href: string) => {
     setIsOpen(false);
-    if (!href) return;
+    
+    if (href === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     
     const element = document.querySelector(`#${href}`);
     if (element) {
