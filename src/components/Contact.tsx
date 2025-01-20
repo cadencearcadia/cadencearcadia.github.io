@@ -26,9 +26,6 @@ export const Contact = () => {
       
       const { data: responseData, error } = await supabase.functions.invoke('send-email', {
         body: data,
-        headers: {
-          'Content-Type': 'application/json',
-        },
       });
 
       console.log('Response:', { responseData, error });

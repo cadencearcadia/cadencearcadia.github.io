@@ -1,10 +1,13 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
+
+const GMAIL_USER = Deno.env.get('GMAIL_USER');
+const GMAIL_APP_PASSWORD = Deno.env.get('GMAIL_APP_PASSWORD');
 
 const corsHeaders = {
-  'Access-Control-Allow-Origin': 'https://cadencearcadia.github.io',
+  'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Max-Age': '86400',
   'Content-Type': 'application/json'
 };
 
@@ -22,6 +25,10 @@ serve(async (req) => {
       throw new Error(`HTTP method ${req.method} is not allowed`);
     }
 
+    if (!GMAIL_USER || !GMAIL_APP_PASSWORD) {
+      throw new Error('Email credentials are not configured');
+    }
+
     // Parse the request body
     const body = await req.json();
     console.log('Received request body:', body);
@@ -33,14 +40,34 @@ serve(async (req) => {
       throw new Error('Missing required fields');
     }
 
-    // Here you would typically implement your email sending logic
-    // For now, we'll just return a success response
-    console.log('Processing email request:', { name, email, message });
+    const client = new SmtpClient();
+
+    await client.connectTLS({
+      hostname: "smtp.gmail.com",
+      port: 465,
+      username: GMAIL_USER,
+      password: GMAIL_APP_PASSWORD,
+    });
+
+    await client.send({
+      from: GMAIL_USER,
+      to: GMAIL_USER,
+      subject: `New Contact Form Message from ${name}`,
+      content: `
+Name: ${name}
+Email: ${email}
+Message: ${message}
+      `,
+    });
+
+    await client.close();
+
+    console.log('Email sent successfully');
 
     return new Response(
       JSON.stringify({ 
         success: true,
-        message: 'Message received successfully'
+        message: 'Message sent successfully'
       }),
       { headers: corsHeaders }
     );
