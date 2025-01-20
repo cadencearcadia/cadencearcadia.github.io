@@ -22,7 +22,7 @@ const handler = async (req: Request): Promise<Response> => {
     const client = new SmtpClient();
     const { name, email, message } = await req.json() as EmailRequest;
 
-    // Rate limiting check could be added here
+    console.log('Attempting to connect to SMTP server...');
     
     await client.connectTLS({
       hostname: "smtp.gmail.com",
@@ -31,17 +31,26 @@ const handler = async (req: Request): Promise<Response> => {
       password: Deno.env.get("GMAIL_APP_PASSWORD"),
     });
 
+    console.log('Connected to SMTP server successfully');
+
+    const emailBody = `
+      New Contact Form Submission
+      
+      Name: ${name}
+      Email: ${email}
+      Message: ${message}
+    `;
+
+    console.log('Sending email...');
+
     await client.send({
       from: Deno.env.get("GMAIL_USER")!,
       to: Deno.env.get("GMAIL_USER")!,
       subject: `New Contact Form Message from ${name}`,
-      content: `
-        Name: ${name}
-        Email: ${email}
-        Message: ${message}
-      `,
+      content: emailBody,
     });
 
+    console.log('Email sent successfully');
     await client.close();
 
     return new Response(
@@ -52,9 +61,17 @@ const handler = async (req: Request): Promise<Response> => {
       }
     );
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error('Error in send-email function:', error);
+    
+    // More detailed error message
+    const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
+    
     return new Response(
-      JSON.stringify({ success: false, error: "Failed to send email" }),
+      JSON.stringify({ 
+        success: false, 
+        error: "Failed to send email", 
+        details: errorMessage 
+      }),
       {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
         status: 500,
