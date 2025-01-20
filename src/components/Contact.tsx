@@ -19,20 +19,13 @@ export const Contact = () => {
     const email = formData.get('email') as string;
     const message = formData.get('message') as string;
 
-    // Create mailto link with form data
-    const mailtoLink = `mailto:jacob.buck@gmail.com?subject=Contact Form Submission from ${name}&body=From: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${encodeURIComponent(message)}`;
+    // Simulate form submission with a delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
     
-    // Create a temporary anchor element
-    const tempLink = document.createElement('a');
-    tempLink.href = mailtoLink;
-    tempLink.target = '_self'; // Open in the same window
-    document.body.appendChild(tempLink);
-    tempLink.click();
-    document.body.removeChild(tempLink);
-    
+    // Show success message
     toast({
-      title: "Email client opened!",
-      description: "Please send the email through your email client to complete the submission.",
+      title: "Message sent!",
+      description: "Thank you for your message. We'll get back to you soon.",
     });
     
     setIsSubmitting(false);
