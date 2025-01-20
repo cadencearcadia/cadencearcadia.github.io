@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useToast } from "./ui/use-toast";
 import { ContactForm } from "./contact/ContactForm";
 import { ContactHeader } from "./contact/ContactHeader";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -19,43 +20,20 @@ export const Contact = () => {
     const message = formData.get('message') as string;
 
     try {
-      const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
-      
-      if (!accessKey) {
-        throw new Error('Web3Forms access key is not configured');
-      }
-
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          access_key: accessKey,
-          name,
-          email,
-          message,
-          from_name: "Contact Form",
-          subject: "New Contact Form Submission",
-          botcheck: false
-        }),
+      const { data, error } = await supabase.functions.invoke('send-email', {
+        body: { name, email, message },
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to send message');
-      }
+      if (error) throw error;
 
-      const result = await response.json();
-      
-      if (result.success) {
+      if (data?.success) {
         toast({
           title: "Message sent successfully!",
           description: "Thank you for your message. I'll get back to you soon.",
         });
         (e.target as HTMLFormElement).reset();
       } else {
-        throw new Error(result.message || 'Failed to send message');
+        throw new Error('Failed to send message');
       }
     } catch (error) {
       console.error('Form submission error:', error);
