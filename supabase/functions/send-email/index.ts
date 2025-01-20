@@ -37,7 +37,11 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const { name, email, message } = await req.json() as EmailRequest;
     
-    console.log('Creating SMTP client...');
+    console.log('Creating SMTP client with credentials:', {
+      username: Deno.env.get("GMAIL_USER"),
+      hasPassword: !!Deno.env.get("GMAIL_APP_PASSWORD")
+    });
+
     const client = new SmtpClient({
       connection: {
         hostname: "smtp.gmail.com",

@@ -23,6 +23,9 @@ export const Contact = () => {
       console.log('Sending request to edge function...');
       const { data, error } = await supabase.functions.invoke('send-email', {
         body: { name, email, message },
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
 
       console.log('Response:', { data, error });
