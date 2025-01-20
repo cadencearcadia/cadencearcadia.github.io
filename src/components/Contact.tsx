@@ -15,31 +15,30 @@ export const Contact = () => {
     setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const message = formData.get('message') as string;
+    const data = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      message: formData.get('message') as string,
+    };
 
     try {
-      console.log('Sending request to edge function with data:', { name, email, message });
-      const { data, error } = await supabase.functions.invoke('send-email', {
-        body: JSON.stringify({ name, email, message }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      console.log('Sending request to edge function with data:', data);
+      const { data: responseData, error } = await supabase.functions.invoke('send-email', {
+        body: JSON.stringify(data),
       });
 
-      console.log('Response:', { data, error });
+      console.log('Response:', { responseData, error });
 
       if (error) throw error;
 
-      if (data?.success) {
+      if (responseData?.success) {
         toast({
           title: "Message sent successfully!",
           description: "Thank you for your message. I'll get back to you soon.",
         });
         (e.target as HTMLFormElement).reset();
       } else {
-        throw new Error(data?.error || 'Failed to send message');
+        throw new Error(responseData?.error || 'Failed to send message');
       }
     } catch (error) {
       console.error('Form submission error:', error);
