@@ -38,20 +38,16 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    // Validate content type
-    const contentType = req.headers.get('content-type');
-    if (!contentType || !contentType.includes('application/json')) {
-      throw new Error('Content-Type must be application/json');
-    }
+    // Get the request body as text first
+    const bodyText = await req.text();
+    console.log('Raw request body:', bodyText);
 
-    // Parse and validate request body
+    // Try to parse the JSON
     let requestData: EmailRequest;
     try {
-      const rawBody = await req.text();
-      console.log('Raw request body:', rawBody);
-      requestData = JSON.parse(rawBody);
+      requestData = JSON.parse(bodyText);
     } catch (error) {
-      console.error('Error parsing request body:', error);
+      console.error('JSON parsing error:', error);
       return new Response(
         JSON.stringify({
           success: false,
