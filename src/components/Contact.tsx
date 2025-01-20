@@ -20,27 +20,34 @@ export const Contact = () => {
     const message = formData.get('message') as string;
 
     try {
-      // In a real application, you would send this to your backend
-      // For now, we'll simulate an API call
-      await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: 'YOUR-ACCESS-KEY-HERE', // You would need to sign up at web3forms.com to get this
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
           name,
           email,
           message,
+          from_name: "Portfolio Contact Form",
+          subject: "New Contact Form Submission",
           to: 'jacob.buck@gmail.com'
         }),
       });
 
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for your message. We'll get back to you soon.",
-      });
+      const result = await response.json();
+      
+      if (result.success) {
+        toast({
+          title: "Message sent successfully!",
+          description: "Thank you for your message. We'll get back to you soon.",
+        });
+      } else {
+        throw new Error(result.message);
+      }
     } catch (error) {
+      console.error('Form submission error:', error);
       toast({
         title: "Error sending message",
         description: "Please try again later.",
