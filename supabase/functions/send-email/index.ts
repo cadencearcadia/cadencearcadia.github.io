@@ -91,13 +91,11 @@ const handler = async (req: Request): Promise<Response> => {
   } catch (error) {
     console.error('Error in send-email function:', error);
     
-    const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
-    
     return new Response(
       JSON.stringify({ 
         success: false, 
         error: "Failed to send email", 
-        details: errorMessage 
+        details: error instanceof Error ? error.message : "Unknown error occurred" 
       }),
       {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
