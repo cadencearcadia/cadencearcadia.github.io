@@ -38,15 +38,36 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
+    // Validate content type
     const contentType = req.headers.get('content-type');
     if (!contentType || !contentType.includes('application/json')) {
       throw new Error('Content-Type must be application/json');
     }
 
-    const requestData = await req.json();
-    console.log('Received request data:', requestData);
+    // Parse and validate request body
+    let requestData: EmailRequest;
+    try {
+      const rawBody = await req.text();
+      console.log('Raw request body:', rawBody);
+      requestData = JSON.parse(rawBody);
+    } catch (error) {
+      console.error('Error parsing request body:', error);
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'Invalid JSON in request body',
+          details: error.message
+        }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 400
+        }
+      );
+    }
+
+    console.log('Parsed request data:', requestData);
     
-    const { name, email, message } = requestData as EmailRequest;
+    const { name, email, message } = requestData;
     
     if (!name || !email || !message) {
       throw new Error('Missing required fields');
