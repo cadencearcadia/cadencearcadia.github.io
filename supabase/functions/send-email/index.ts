@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
+import { SmtpClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -19,26 +19,37 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const client = new SmtpClient();
     const { name, email, message } = await req.json() as EmailRequest;
-
-    console.log('Attempting to connect to SMTP server...');
     
-    await client.connectTLS({
-      hostname: "smtp.gmail.com",
-      port: 465,
-      username: Deno.env.get("GMAIL_USER"),
-      password: Deno.env.get("GMAIL_APP_PASSWORD"),
+    console.log('Creating SMTP client...');
+    const client = new SmtpClient({
+      connection: {
+        hostname: "smtp.gmail.com",
+        port: 465,
+        tls: true,
+        auth: {
+          username: Deno.env.get("GMAIL_USER"),
+          password: Deno.env.get("GMAIL_APP_PASSWORD"),
+        },
+      },
     });
 
-    console.log('Connected to SMTP server successfully');
-
+    console.log('Connecting to SMTP server...');
+    
     const emailBody = `
       New Contact Form Submission
       
       Name: ${name}
       Email: ${email}
       Message: ${message}
+    `;
+
+    const htmlBody = `
+      <h2>New Contact Form Submission</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Message:</strong></p>
+      <p>${message}</p>
     `;
 
     console.log('Sending email...');
@@ -48,13 +59,7 @@ const handler = async (req: Request): Promise<Response> => {
       to: Deno.env.get("GMAIL_USER")!,
       subject: `New Contact Form Message from ${name}`,
       content: emailBody,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
+      html: htmlBody,
     });
 
     console.log('Email sent successfully');
@@ -70,7 +75,6 @@ const handler = async (req: Request): Promise<Response> => {
   } catch (error) {
     console.error('Error in send-email function:', error);
     
-    // More detailed error message
     const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
     
     return new Response(
