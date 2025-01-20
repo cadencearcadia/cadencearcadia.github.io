@@ -35,8 +35,16 @@ export const Contact = () => {
           name,
           email,
           message,
+          from_name: "Contact Form",
+          subject: "New Contact Form Submission",
+          botcheck: false
         }),
       });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to send message');
+      }
 
       const result = await response.json();
       
@@ -53,7 +61,7 @@ export const Contact = () => {
       console.error('Form submission error:', error);
       toast({
         title: "Error sending message",
-        description: "Please try again later.",
+        description: error instanceof Error ? error.message : "Please try again later.",
         variant: "destructive",
       });
     } finally {
