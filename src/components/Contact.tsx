@@ -23,13 +23,19 @@ export const Contact = () => {
 
     try {
       console.log('Sending request to edge function with data:', data);
+      
       const { data: responseData, error } = await supabase.functions.invoke('send-email', {
         body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
 
       console.log('Response:', { responseData, error });
 
-      if (error) throw error;
+      if (error) {
+        throw new Error(error.message || 'Failed to send message');
+      }
 
       if (responseData?.success) {
         toast({
