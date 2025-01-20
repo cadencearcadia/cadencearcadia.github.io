@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
+import { createTransport } from "npm:nodemailer";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -76,18 +76,18 @@ const handler = async (req: Request): Promise<Response> => {
       throw new Error('Missing email configuration');
     }
 
-    console.log('Creating SMTP client with credentials:', {
+    console.log('Creating nodemailer transport with credentials:', {
       username: gmailUser,
       hasPassword: !!gmailPassword
     });
 
-    const client = new SmtpClient();
-
-    await client.connectTLS({
-      hostname: "smtp.gmail.com",
-      port: 465,
-      username: gmailUser,
-      password: gmailPassword,
+    // Create reusable transporter object using SMTP transport
+    const transporter = createTransport({
+      service: 'gmail',
+      auth: {
+        user: gmailUser,
+        pass: gmailPassword,
+      },
     });
 
     console.log('Connected to SMTP server, sending email...');
@@ -100,15 +100,15 @@ const handler = async (req: Request): Promise<Response> => {
       Message: ${message}
     `;
 
-    await client.send({
+    // Send mail with defined transport object
+    const info = await transporter.sendMail({
       from: gmailUser,
       to: gmailUser,
       subject: `New Contact Form Message from ${name}`,
-      content: emailBody,
+      text: emailBody,
     });
 
-    console.log('Email sent successfully');
-    await client.close();
+    console.log('Email sent successfully:', info);
 
     return new Response(
       JSON.stringify({ 
