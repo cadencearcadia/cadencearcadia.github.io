@@ -51,6 +51,7 @@ const handler = async (req: Request): Promise<Response> => {
     });
 
     console.log('Connecting to SMTP server...');
+    await client.connect();
     
     const emailBody = `
       New Contact Form Submission
@@ -69,7 +70,6 @@ const handler = async (req: Request): Promise<Response> => {
     `;
 
     console.log('Sending email...');
-
     await client.send({
       from: Deno.env.get("GMAIL_USER")!,
       to: Deno.env.get("GMAIL_USER")!,
