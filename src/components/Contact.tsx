@@ -19,13 +19,20 @@ export const Contact = () => {
     const message = formData.get('message') as string;
 
     try {
+      // Get the access key from environment variables
+      const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
+      
+      if (!accessKey) {
+        throw new Error('Web3Forms access key is not configured');
+      }
+
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          access_key: accessKey, // Add the access key here
           name,
           email,
           message,
