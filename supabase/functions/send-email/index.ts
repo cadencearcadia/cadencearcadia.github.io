@@ -48,6 +48,13 @@ const handler = async (req: Request): Promise<Response> => {
       to: Deno.env.get("GMAIL_USER")!,
       subject: `New Contact Form Message from ${name}`,
       content: emailBody,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `,
     });
 
     console.log('Email sent successfully');
