@@ -4,6 +4,8 @@ const corsHeaders = {
   'Access-Control-Allow-Origin': 'https://cadencearcadia.github.io',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Max-Age': '86400',
+  'Content-Type': 'application/json'
 };
 
 serve(async (req) => {
@@ -12,7 +14,7 @@ serve(async (req) => {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     console.log('Handling OPTIONS request');
-    return new Response('ok', { headers: corsHeaders });
+    return new Response(null, { headers: corsHeaders });
   }
 
   try {
@@ -40,12 +42,7 @@ serve(async (req) => {
         success: true,
         message: 'Message received successfully'
       }),
-      {
-        headers: {
-          ...corsHeaders,
-          'Content-Type': 'application/json',
-        },
-      },
+      { headers: corsHeaders }
     );
   } catch (error) {
     console.error('Error processing request:', error);
@@ -55,13 +52,10 @@ serve(async (req) => {
         success: false, 
         error: error instanceof Error ? error.message : 'Unknown error occurred' 
       }),
-      {
+      { 
         status: 400,
-        headers: {
-          ...corsHeaders,
-          'Content-Type': 'application/json',
-        },
-      },
+        headers: corsHeaders
+      }
     );
   }
 });
