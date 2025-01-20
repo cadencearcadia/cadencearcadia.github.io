@@ -39,15 +39,24 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const requestData = await req.json();
+    console.log('Received request data:', requestData);
+    
     const { name, email, message } = requestData as EmailRequest;
     
     if (!name || !email || !message) {
       throw new Error('Missing required fields');
     }
 
+    const gmailUser = Deno.env.get("GMAIL_USER");
+    const gmailPassword = Deno.env.get("GMAIL_APP_PASSWORD");
+
+    if (!gmailUser || !gmailPassword) {
+      throw new Error('Missing email configuration');
+    }
+
     console.log('Creating SMTP client with credentials:', {
-      username: Deno.env.get("GMAIL_USER"),
-      hasPassword: !!Deno.env.get("GMAIL_APP_PASSWORD")
+      username: gmailUser,
+      hasPassword: !!gmailPassword
     });
 
     const client = new SmtpClient();
@@ -55,8 +64,8 @@ const handler = async (req: Request): Promise<Response> => {
     await client.connectTLS({
       hostname: "smtp.gmail.com",
       port: 465,
-      username: Deno.env.get("GMAIL_USER"),
-      password: Deno.env.get("GMAIL_APP_PASSWORD"),
+      username: gmailUser,
+      password: gmailPassword,
     });
 
     console.log('Connected to SMTP server, sending email...');
@@ -70,8 +79,8 @@ const handler = async (req: Request): Promise<Response> => {
     `;
 
     await client.send({
-      from: Deno.env.get("GMAIL_USER")!,
-      to: Deno.env.get("GMAIL_USER")!,
+      from: gmailUser,
+      to: gmailUser,
       subject: `New Contact Form Message from ${name}`,
       content: emailBody,
     });
