@@ -19,17 +19,37 @@ export const Contact = () => {
     const email = formData.get('email') as string;
     const message = formData.get('message') as string;
 
-    // Simulate form submission with a delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Show success message
-    toast({
-      title: "Message sent!",
-      description: "Thank you for your message. We'll get back to you soon.",
-    });
-    
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
+    try {
+      // In a real application, you would send this to your backend
+      // For now, we'll simulate an API call
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'YOUR-ACCESS-KEY-HERE', // You would need to sign up at web3forms.com to get this
+          name,
+          email,
+          message,
+          to: 'jacob.buck@gmail.com'
+        }),
+      });
+
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for your message. We'll get back to you soon.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error sending message",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+      (e.target as HTMLFormElement).reset();
+    }
   };
 
   return (
