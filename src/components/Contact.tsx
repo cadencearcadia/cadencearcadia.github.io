@@ -20,9 +20,15 @@ export const Contact = () => {
     const message = formData.get('message') as string;
 
     try {
+      console.log('Sending request to edge function...');
       const { data, error } = await supabase.functions.invoke('send-email', {
         body: { name, email, message },
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
+
+      console.log('Response:', { data, error });
 
       if (error) throw error;
 
@@ -33,7 +39,7 @@ export const Contact = () => {
         });
         (e.target as HTMLFormElement).reset();
       } else {
-        throw new Error('Failed to send message');
+        throw new Error(data?.error || 'Failed to send message');
       }
     } catch (error) {
       console.error('Form submission error:', error);
