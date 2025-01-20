@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.208.0/http/server.ts";
-import { SmtpClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
+import * as nodemailer from "npm:nodemailer";
 
 const GMAIL_USER = Deno.env.get('GMAIL_USER');
 const GMAIL_APP_PASSWORD = Deno.env.get('GMAIL_APP_PASSWORD');
@@ -40,23 +40,21 @@ serve(async (req) => {
       throw new Error('Missing required fields');
     }
 
-    const client = new SmtpClient({
-      connection: {
-        hostname: "smtp.gmail.com",
-        port: 465,
-        tls: true,
-        auth: {
-          username: GMAIL_USER,
-          password: GMAIL_APP_PASSWORD,
-        },
+    // Create a nodemailer transporter
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: GMAIL_USER,
+        pass: GMAIL_APP_PASSWORD,
       },
     });
 
-    await client.send({
+    // Send the email
+    await transporter.sendMail({
       from: GMAIL_USER,
       to: GMAIL_USER,
       subject: `New Contact Form Message from ${name}`,
-      content: `
+      text: `
 Name: ${name}
 Email: ${email}
 Message: ${message}
