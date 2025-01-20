@@ -1,5 +1,6 @@
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { createTransport } from "npm:nodemailer";
+import { createClient } from '@supabase/supabase-js';
+import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
+import { createTransport } from 'npm:nodemailer';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -7,134 +8,87 @@ const corsHeaders = {
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
 };
 
-interface EmailRequest {
-  name: string;
-  email: string;
-  message: string;
-}
-
-const handler = async (req: Request): Promise<Response> => {
-  console.log('Received request:', req.method);
-  
+serve(async (req) => {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
-    return new Response(null, { 
-      headers: corsHeaders,
-      status: 204
-    });
-  }
-
-  if (req.method !== 'POST') {
-    return new Response(
-      JSON.stringify({ 
-        success: false, 
-        error: 'Method not allowed' 
-      }),
-      { 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        status: 405
-      }
-    );
+    return new Response('ok', { headers: corsHeaders });
   }
 
   try {
-    // Get the request body as text first
-    const bodyText = await req.text();
-    console.log('Raw request body:', bodyText);
+    if (req.method !== 'POST') {
+      throw new Error('Method not allowed');
+    }
 
-    // Try to parse the JSON
-    let requestData: EmailRequest;
+    // Parse the request body
+    const requestText = await req.text();
+    let data;
     try {
-      requestData = JSON.parse(bodyText);
+      data = JSON.parse(requestText);
     } catch (error) {
       console.error('JSON parsing error:', error);
       return new Response(
         JSON.stringify({
           success: false,
           error: 'Invalid JSON in request body',
-          details: error.message
+          details: error.message,
         }),
         {
+          status: 400,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 400
         }
       );
     }
 
-    console.log('Parsed request data:', requestData);
-    
-    const { name, email, message } = requestData;
-    
+    // Validate required fields
+    const { name, email, message } = data;
     if (!name || !email || !message) {
       throw new Error('Missing required fields');
     }
 
-    const gmailUser = Deno.env.get("GMAIL_USER");
-    const gmailPassword = Deno.env.get("GMAIL_APP_PASSWORD");
-
-    if (!gmailUser || !gmailPassword) {
-      throw new Error('Missing email configuration');
-    }
-
-    console.log('Creating nodemailer transport with credentials:', {
-      username: gmailUser,
-      hasPassword: !!gmailPassword
-    });
-
-    // Create reusable transporter object using SMTP transport
-    const transporter = createTransport({
+    // Create nodemailer transport
+    const transport = createTransport({
       service: 'gmail',
       auth: {
-        user: gmailUser,
-        pass: gmailPassword,
+        user: Deno.env.get('GMAIL_USER'),
+        pass: Deno.env.get('GMAIL_APP_PASSWORD'),
       },
     });
 
-    console.log('Connected to SMTP server, sending email...');
-    
-    const emailBody = `
-      New Contact Form Submission
-      
-      Name: ${name}
-      Email: ${email}
-      Message: ${message}
-    `;
-
-    // Send mail with defined transport object
-    const info = await transporter.sendMail({
-      from: gmailUser,
-      to: gmailUser,
-      subject: `New Contact Form Message from ${name}`,
-      text: emailBody,
+    // Send email
+    await transport.sendMail({
+      from: Deno.env.get('GMAIL_USER'),
+      to: Deno.env.get('GMAIL_USER'),
+      subject: `New Contact Form Submission from ${name}`,
+      text: `
+        Name: ${name}
+        Email: ${email}
+        Message: ${message}
+      `,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong> ${message}</p>
+      `,
     });
 
-    console.log('Email sent successfully:', info);
-
     return new Response(
-      JSON.stringify({ 
-        success: true, 
-        message: "Email sent successfully" 
-      }),
+      JSON.stringify({ success: true }),
       {
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-        status: 200,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
     );
   } catch (error) {
-    console.error('Error in send-email function:', error);
-    
+    console.error('Error:', error);
     return new Response(
-      JSON.stringify({ 
-        success: false, 
-        error: "Failed to send email", 
-        details: error instanceof Error ? error.message : "Unknown error occurred" 
+      JSON.stringify({
+        success: false,
+        error: error.message || 'Internal server error',
       }),
       {
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-        status: 400,
+        status: error.message === 'Method not allowed' ? 405 : 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
     );
   }
-};
-
-serve(handler);
+});
