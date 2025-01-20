@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { SMTPClient } from "https://deno.land/x/denomailer@1.6.1/mod.ts";
+import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -42,20 +42,16 @@ const handler = async (req: Request): Promise<Response> => {
       hasPassword: !!Deno.env.get("GMAIL_APP_PASSWORD")
     });
 
-    const client = new SMTPClient({
-      connection: {
-        hostname: "smtp.gmail.com",
-        port: 465,
-        tls: true,
-        auth: {
-          username: Deno.env.get("GMAIL_USER"),
-          password: Deno.env.get("GMAIL_APP_PASSWORD"),
-        },
-      },
+    const client = new SmtpClient();
+
+    await client.connectTLS({
+      hostname: "smtp.gmail.com",
+      port: 465,
+      username: Deno.env.get("GMAIL_USER"),
+      password: Deno.env.get("GMAIL_APP_PASSWORD"),
     });
 
-    console.log('Connecting to SMTP server...');
-    await client.connect();
+    console.log('Connected to SMTP server, sending email...');
     
     const emailBody = `
       New Contact Form Submission
@@ -65,21 +61,11 @@ const handler = async (req: Request): Promise<Response> => {
       Message: ${message}
     `;
 
-    const htmlBody = `
-      <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Message:</strong></p>
-      <p>${message}</p>
-    `;
-
-    console.log('Sending email...');
     await client.send({
       from: Deno.env.get("GMAIL_USER")!,
       to: Deno.env.get("GMAIL_USER")!,
       subject: `New Contact Form Message from ${name}`,
       content: emailBody,
-      html: htmlBody,
     });
 
     console.log('Email sent successfully');
