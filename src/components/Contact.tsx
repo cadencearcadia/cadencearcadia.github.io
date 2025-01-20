@@ -13,13 +13,21 @@ export const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const message = formData.get('message') as string;
+
+    // Create mailto link with form data
+    const mailtoLink = `mailto:jacob.buck@gmail.com?subject=Contact Form Submission from ${name}&body=From: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${encodeURIComponent(message)}`;
     
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // Open email client
+    window.location.href = mailtoLink;
     
     toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I'll get back to you soon.",
+      title: "Email client opened!",
+      description: "Please send the email through your email client to complete the submission.",
     });
     
     setIsSubmitting(false);
@@ -60,6 +68,7 @@ export const Contact = () => {
                   </label>
                   <Input
                     id="name"
+                    name="name"
                     placeholder="Your name"
                     required
                     className="bg-background/50"
@@ -71,6 +80,7 @@ export const Contact = () => {
                   </label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
                     placeholder="Your email"
                     required
@@ -84,6 +94,7 @@ export const Contact = () => {
                 </label>
                 <Textarea
                   id="message"
+                  name="message"
                   placeholder="Your message"
                   required
                   className="min-h-[150px] bg-background/50"
