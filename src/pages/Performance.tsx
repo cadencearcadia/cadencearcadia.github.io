@@ -17,7 +17,7 @@ const Performance = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchPerformanceMetrics = async (url: string) => {
-    const apiKey = "YOUR_API_KEY"; // Note: This should be moved to environment variables
+    const apiKey = "AIzaSyDIxbw12by2RiEXJLJWdg46cXG3DgIqruk"; // Note: This should be moved to environment variables
     const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(
       url
     )}&key=${apiKey}&strategy=mobile`;
