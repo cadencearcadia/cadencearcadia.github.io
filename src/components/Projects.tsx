@@ -5,16 +5,23 @@ import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
+    title: "2koperating - Oil & Gas Saltwater Disposal",
+    description: "Static website developement for an oil & gas saltwater disposal company",
+    tech: ["React", "TypeScript", "Vite", "Supabase", "Tailwind"],
+    live: "https://2koperating.netlify.app",
+    image: "/2k-project-view.webp",
+  },
+  {
     title: "Cabin Reservation Platform",
     description: "A full-featured reservation solution built with React, Next.js, and Supabase",
-    tech: ["React", "Next.js", "Node.js", "Supabase"],
+    tech: ["React", "Typescript", "Vite", "Next.js", "Node.js", "Supabase", "Tailwind"],
     live: "https://the-wild-oasis-website-bice.vercel.app",
     image: "/lovable-uploads/44896dd8-0840-425a-af0b-724b5a3e3e81.png",
   },
   {
     title: "Cabin Management App",
     description: "Real-time guest management and analytics dashboard with React Query and Supabase",
-    tech: ["React", "React Query", "Supabase"],
+    tech: ["React", "TypeScript", "Vite", "React Query", "Supabase", "Tailwind"],
     live: "https://oasis-bookings-app.netlify.app",
     image: "/lovable-uploads/a7673e4c-528b-4fdf-97ff-12aa048e569a.png",
   },
