@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Helmet } from "react-helmet";
 
 interface Metrics {
   performance: number;
@@ -90,73 +91,99 @@ const Performance = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted">
-      <Navigation />
-      <main className="container mx-auto px-4 pt-24 pb-8"> {/* Added pt-24 for top padding */}
-        <h1 className="text-3xl font-bold mb-8">Project Performance Metrics</h1>
+    <>
+      <Helmet>
+        <title>Project Performance Metrics - Jacob Buck</title>
+        <meta name="description" content="Performance metrics and analysis of web development projects by Jacob Buck, showcasing optimization and best practices in React applications." />
+        <meta name="keywords" content="Web Performance, React Applications, Performance Metrics, PageSpeed Insights" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Project Performance Metrics",
+            "description": "Performance metrics and analysis of web development projects by Jacob Buck",
+            "author": {
+              "@type": "Person",
+              "name": "Jacob Buck"
+            },
+            "about": {
+              "@type": "Thing",
+              "name": "Web Performance Analysis"
+            }
+          })}
+        </script>
+      </Helmet>
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted">
+        <Navigation />
+        <main className="container mx-auto px-4 pt-24 pb-8">
+          <h1 className="text-3xl font-bold mb-8">Project Performance Metrics</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <Card key={project.url} className="overflow-hidden">
-              <div className="relative h-48">
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <CardHeader>
-                <CardTitle className="text-xl">{project.name}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {loading[project.url] ? (
-                  <div className="space-y-4">
-                    <Skeleton className="h-4 w-[250px]" />
-                    <Skeleton className="h-4 w-[200px]" />
-                    <Skeleton className="h-4 w-[220px]" />
-                    <Skeleton className="h-4 w-[180px]" />
-                  </div>
-                ) : errors[project.url] ? (
-                  <p className="text-destructive">{errors[project.url]}</p>
-                ) : projectMetrics[project.url] ? (
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Page Performance Metrics</h3>
-                    <ul className="space-y-2">
-                      <li>
-                        <strong>Performance:</strong> {projectMetrics[project.url]?.performance}/100
-                      </li>
-                      <li>
-                        <strong>LCP:</strong> {projectMetrics[project.url]?.lcp}
-                      </li>
-                      <li>
-                        <strong>TBT:</strong> {projectMetrics[project.url]?.tbt}
-                      </li>
-                      <li>
-                        <strong>CLS:</strong> {projectMetrics[project.url]?.cls}
-                      </li>
-                      <li>
-                        <strong>FCP:</strong> {projectMetrics[project.url]?.fcp}
-                      </li>
-                    </ul>
-                    <a
-                      href={`https://pagespeed.web.dev/report?url=${encodeURIComponent(
-                        project.url
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline inline-block mt-4"
-                    >
-                      View Full Report
-                    </a>
-                  </div>
-                ) : null}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </main>
-    </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project) => (
+              <Card key={project.url} className="overflow-hidden">
+                <div className="relative h-48">
+                  <img
+                    src={project.image}
+                    alt={`Screenshot of ${project.name}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    width={800}
+                    height={400}
+                  />
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-xl">{project.name}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {loading[project.url] ? (
+                    <div className="space-y-4">
+                      <Skeleton className="h-4 w-[250px]" />
+                      <Skeleton className="h-4 w-[200px]" />
+                      <Skeleton className="h-4 w-[220px]" />
+                      <Skeleton className="h-4 w-[180px]" />
+                    </div>
+                  ) : errors[project.url] ? (
+                    <p className="text-destructive">{errors[project.url]}</p>
+                  ) : projectMetrics[project.url] ? (
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-semibold">Page Performance Metrics</h3>
+                      <ul className="space-y-2">
+                        <li>
+                          <strong>Performance:</strong> {projectMetrics[project.url]?.performance}/100
+                        </li>
+                        <li>
+                          <strong>LCP:</strong> {projectMetrics[project.url]?.lcp}
+                        </li>
+                        <li>
+                          <strong>TBT:</strong> {projectMetrics[project.url]?.tbt}
+                        </li>
+                        <li>
+                          <strong>CLS:</strong> {projectMetrics[project.url]?.cls}
+                        </li>
+                        <li>
+                          <strong>FCP:</strong> {projectMetrics[project.url]?.fcp}
+                        </li>
+                      </ul>
+                      <a
+                        href={`https://pagespeed.web.dev/report?url=${encodeURIComponent(
+                          project.url
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline inline-block mt-4"
+                        aria-label={`View full performance report for ${project.name}`}
+                      >
+                        View Full Report
+                      </a>
+                    </div>
+                  ) : null}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </main>
+      </div>
+    </>
   );
 };
 
