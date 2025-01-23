@@ -92,7 +92,7 @@ const Performance = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted">
       <Navigation />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 pt-24 pb-8"> {/* Added pt-24 for top padding */}
         <h1 className="text-3xl font-bold mb-8">Project Performance Metrics</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
