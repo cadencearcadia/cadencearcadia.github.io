@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
+import Performance from "./pages/Performance";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,7 +33,8 @@ const App = () => (
           }>
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="*" element={<Index />} /> {/* Add catch-all route */}
+              <Route path="/performance" element={<Performance />} />
+              <Route path="*" element={<Index />} />
             </Routes>
           </Suspense>
         </BrowserRouter>

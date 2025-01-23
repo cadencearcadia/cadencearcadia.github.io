@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Menu, Home, User, Code, FolderGit2, Mail } from "lucide-react";
+import { Menu, Home, User, Code, FolderGit2, Mail, Activity } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { ThemeToggle } from "./ThemeToggle";
+import { useNavigate } from "react-router-dom";
 
 const menuItems = [
   { label: "Home", href: "home", icon: Home },
@@ -10,13 +11,20 @@ const menuItems = [
   { label: "Skills", href: "skills", icon: Code },
   { label: "Projects", href: "projects", icon: FolderGit2 },
   { label: "Contact", href: "contact", icon: Mail },
+  { label: "Performance", href: "performance", icon: Activity, isPage: true },
 ];
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const scrollToSection = (href: string) => {
+  const handleNavigation = (href: string, isPage?: boolean) => {
     setIsOpen(false);
+    
+    if (isPage) {
+      navigate(`/${href}`);
+      return;
+    }
     
     if (href === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -41,7 +49,7 @@ export const Navigation = () => {
               key={item.href}
               variant="ghost"
               className="text-sm font-medium"
-              onClick={() => scrollToSection(item.href)}
+              onClick={() => handleNavigation(item.href, item.isPage)}
             >
               {item.label}
             </Button>
@@ -71,7 +79,7 @@ export const Navigation = () => {
                         key={item.href}
                         variant="ghost"
                         className="justify-start gap-3 w-full text-base"
-                        onClick={() => scrollToSection(item.href)}
+                        onClick={() => handleNavigation(item.href, item.isPage)}
                       >
                         <Icon className="h-5 w-5" />
                         {item.label}
