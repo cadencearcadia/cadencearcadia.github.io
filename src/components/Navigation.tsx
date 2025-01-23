@@ -27,6 +27,7 @@ export const Navigation = () => {
     }
     
     if (href === "home") {
+      navigate("/");
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
@@ -40,7 +41,13 @@ export const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <span className="text-lg font-bold">Jacob Buck</span>
+        <Button
+          variant="link"
+          className="text-lg font-bold p-0"
+          onClick={() => handleNavigation("home")}
+        >
+          Jacob Buck
+        </Button>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">
@@ -68,9 +75,13 @@ export const Navigation = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-72">
               <div className="flex flex-col gap-6">
-                <div className="border-b pb-4">
-                  <span className="text-xl font-bold">Jacob Buck</span>
-                </div>
+                <Button
+                  variant="link"
+                  className="text-xl font-bold justify-start p-0 border-b pb-4"
+                  onClick={() => handleNavigation("home")}
+                >
+                  Jacob Buck
+                </Button>
                 <div className="flex flex-col gap-2">
                   {menuItems.map((item) => {
                     const Icon = item.icon;
