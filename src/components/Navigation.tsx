@@ -11,7 +11,6 @@ const menuItems = [
   { label: "Skills", href: "skills", icon: Code },
   { label: "Projects", href: "projects", icon: FolderGit2 },
   { label: "Contact", href: "contact", icon: Mail },
-  { label: "Performance", href: "performance", icon: Activity, isPage: true },
 ];
 
 export const Navigation = () => {
