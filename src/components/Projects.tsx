@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import { Button } from "./ui/button";
 import { ExternalLink } from "lucide-react";
+import { PerformanceMetrics } from "./PerformanceMetrics";
+import { useQuery } from "@tanstack/react-query";
 
 const projects = [
   {
@@ -27,7 +29,38 @@ const projects = [
   },
 ];
 
+const fetchPerformanceMetrics = async (url: string) => {
+  const apiKey = "AIzaSyDIxbw12by2RiEXJLJWdg46cXG3DgIqruk";
+  const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(
+    url
+  )}&key=${apiKey}&strategy=mobile`;
+
+  const response = await fetch(apiUrl);
+  if (!response.ok) {
+    throw new Error(`Error: ${response.statusText}`);
+  }
+
+  const data = await response.json();
+  return {
+    performance: Math.round(
+      data.lighthouseResult.categories.performance.score * 100
+    ),
+    lcp: data.lighthouseResult.audits["largest-contentful-paint"].displayValue,
+    tbt: data.lighthouseResult.audits["total-blocking-time"].displayValue,
+    cls: data.lighthouseResult.audits["cumulative-layout-shift"].displayValue,
+    fcp: data.lighthouseResult.audits["first-contentful-paint"].displayValue,
+  };
+};
+
 export const Projects = () => {
+  const projectQueries = projects.map((project) => ({
+    queryKey: ["performance", project.live],
+    queryFn: () => fetchPerformanceMetrics(project.live),
+    staleTime: 1000 * 60 * 60, // Cache for 1 hour
+  }));
+
+  const results = projectQueries.map((query) => useQuery(query));
+
   return (
     <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative" id="projects">
       <div 
@@ -88,13 +121,16 @@ export const Projects = () => {
                     ))}
                   </div>
                 </CardContent>
-                <CardFooter className="p-4 sm:p-6 pt-0">
-                  <Button size="sm" asChild className="w-full">
+                <CardFooter className="p-4 sm:p-6 pt-0 flex-col items-stretch gap-4">
+                  <Button size="sm" asChild>
                     <a href={project.live} target="_blank" rel="noopener">
                       <ExternalLink className="mr-2 h-4 w-4" />
                       Live Demo
                     </a>
                   </Button>
+                  {results[index].isSuccess && (
+                    <PerformanceMetrics {...results[index].data} />
+                  )}
                 </CardFooter>
               </Card>
             </motion.div>
@@ -110,3 +146,5 @@ export const Projects = () => {
 // tech stack, and a link to the live demo. Images are lazy loaded and
 // optimized for performance, with the first image having high priority
 // loading for better LCP (Largest Contentful Paint) metrics.
+// Performance metrics are fetched and displayed for each project using
+// the Google PageSpeed Insights API.
