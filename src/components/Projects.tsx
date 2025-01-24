@@ -12,14 +12,14 @@ const projects = [
   {
     title: "Cabin Reservation Platform",
     description: "A full-featured reservation solution built with React, Next.js, and Supabase",
-    tech: ["React", "Typescript", "Vite", "Next.js", "Node.js", "Supabase", "Tailwind"],
+    tech: ["React", "Vite", "Next.js", "Node.js", "Supabase", "Tailwind"],
     live: "https://the-wild-oasis-website-bice.vercel.app",
     image: "/lovable-uploads/44896dd8-0840-425a-af0b-724b5a3e3e81.png",
   },
   {
     title: "Cabin Management App",
     description: "Real-time guest management and analytics dashboard with React Query and Supabase",
-    tech: ["React", "TypeScript", "Vite", "React Query", "Supabase", "Tailwind"],
+    tech: ["React", "Vite", "React Query", "Supabase", "Tailwind"],
     live: "https://oasis-bookings-app.netlify.app",
     image: "/lovable-uploads/a7673e4c-528b-4fdf-97ff-12aa048e569a.png",
   },
