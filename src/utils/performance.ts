@@ -28,7 +28,7 @@ export const getStoredPerformanceMetrics = async (url: string) => {
     .from("performance_metrics")
     .select("*")
     .eq("project_url", url)
-    .single();
+    .maybeSingle();
 
   if (error) {
     console.error("Error fetching stored metrics:", error);
@@ -41,7 +41,7 @@ export const getStoredPerformanceMetrics = async (url: string) => {
 export const updatePerformanceMetrics = async (url: string) => {
   const metrics = await fetchPerformanceMetrics(url);
   
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from("performance_metrics")
     .upsert({
       project_url: url,
@@ -51,14 +51,22 @@ export const updatePerformanceMetrics = async (url: string) => {
       cls: metrics.cls,
       fcp: metrics.fcp,
       last_updated: new Date().toISOString(),
-    });
+    })
+    .select()
+    .maybeSingle();
 
   if (error) {
     console.error("Error updating metrics:", error);
     throw error;
   }
 
-  return metrics;
+  return {
+    performance: metrics.performance,
+    lcp: metrics.lcp,
+    tbt: metrics.tbt,
+    cls: metrics.cls,
+    fcp: metrics.fcp,
+  };
 };
 
 export const shouldUpdateMetrics = (lastUpdated: string | null) => {
