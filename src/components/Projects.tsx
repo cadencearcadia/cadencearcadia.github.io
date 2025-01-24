@@ -3,7 +3,7 @@ import { ProjectCard } from "./ProjectCard";
 
 const projects = [
   {
-    title: "2koperating - Oil & Gas Saltwater Disposal",
+    title: "2koperating - Oil & Gas",
     description: "Static website developement for an oil & gas saltwater disposal company",
     tech: ["React", "TypeScript", "Vite", "Supabase", "Tailwind"],
     live: "https://2koperating.netlify.app",
