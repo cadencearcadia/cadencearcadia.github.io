@@ -9,7 +9,39 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      performance_metrics: {
+        Row: {
+          cls: string
+          fcp: string
+          id: string
+          last_updated: string | null
+          lcp: string
+          performance_score: number
+          project_url: string
+          tbt: string
+        }
+        Insert: {
+          cls: string
+          fcp: string
+          id?: string
+          last_updated?: string | null
+          lcp: string
+          performance_score: number
+          project_url: string
+          tbt: string
+        }
+        Update: {
+          cls?: string
+          fcp?: string
+          id?: string
+          last_updated?: string | null
+          lcp?: string
+          performance_score?: number
+          project_url?: string
+          tbt?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
